@@ -19,3 +19,5 @@ Either download the zip file or clone the repository to obtain the full project 
 * BouncyCastle.Crypto.dll
 * Cryptography.dll
 
+##Examples
+For comprehensive examples either look at the Nunit Test or examine the Examples project included in this distribution.
