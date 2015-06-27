@@ -10,3 +10,6 @@ The [license](LICENSE.txt), including licenses for dependent software, can be re
 This library is dependent on the following jar files in <a href="http://www.bouncycastle.org" target="_blank">Bouncy Castle C# library Version 1.7</a> which are included in this project.
 
 * BouncyCastle.Crypto.dll
+
+#Compiling
+This project can be compiled in Xamarin or Visual Studio 2012.  To run the Unit Tests in Visual Studio 2012 you must install the **NUnit Test Adapter** in the **Tools / Extensions and Updates** menu.
