@@ -12,4 +12,4 @@ This library is dependent on the following jar files in <a href="http://www.boun
 * BouncyCastle.Crypto.dll
 
 #Compiling
-This project can be compiled in Xamarin or Visual Studio 2012.  To run the Unit Tests in Visual Studio 2012 you must install the **NUnit Test Adapter** in the **Tools / Extensions and Updates** menu.
+This project can be compiled in Xamarin or Visual Studio 2012.  To run the Unit Tests in Visual Studio 2012 you must install the **NUnit Test Adapter** in the **Tools / Extensions and Updates** menu.  The Unit Test should already work in Xamarin.
