@@ -2,7 +2,6 @@
 ###################
 *.com
 *.class
-*.dll
 *.exe
 *.o
 *.so
@@ -41,3 +40,6 @@ build_release.bsh
 ehthumbs.db
 Thumbs.db
 
+#####################
+# unexcludes
+!Cryptography/BouncyCastle.Crypto.dll

@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Examples/Examples.csproj">
+﻿<Properties StartupItem="UnitTest/UnitTest.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Cryptography/AESService.cs">
     <Files>

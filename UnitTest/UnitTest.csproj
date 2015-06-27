@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="AESServiceTest.cs" />
     <Compile Include="RSAServiceTest.cs" />
+    <Compile Include="common\DigestSHATest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -49,5 +50,8 @@
       <Project>{0866890C-3988-47CB-A24A-A3D868B6A2EA}</Project>
       <Name>cryptography</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="common\" />
   </ItemGroup>
 </Project>

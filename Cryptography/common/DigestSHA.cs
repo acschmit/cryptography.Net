@@ -35,7 +35,7 @@ namespace org.albertschmitt.crypto
 	public static class DigestSHA
 	{
 		// InputStream buffer size.
-		private const int	BUFFER_SIZE	= 8192;
+		private const int BUFFER_SIZE = 8192;
 
 		/// <summary>
 		/// Encode the stream with the given digest.
