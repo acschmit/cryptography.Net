@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="Examples/Examples.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Cryptography/AESService.cs">
+    <Files>
+      <File FileName="Cryptography/AESService.cs" Line="6" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/acschmit/Documents/MonoProjects/Cryptography/Examples/Example_010.cs" line="36" column="1" />
+      <Breakpoint file="/Users/acschmit/Documents/MonoProjects/Cryptography/Examples/Example_020.cs" line="16" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

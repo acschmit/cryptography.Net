@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProjectGuid>{08A56AE7-6BBB-4966-8F0E-A8EA18A8E273}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="Linux Binaries">
+          <Builder targetFile="CryptographyBinaries.zip" platform="Linux" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="Cryptography\cryptography.csproj" />
+            </ChildEntries>
+            <RootEntry path="Cryptography.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
+  </PropertyGroup>
+</Project>

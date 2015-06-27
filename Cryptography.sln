@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cryptography", "Cryptography\cryptography.csproj", "{0866890C-3988-47CB-A24A-A3D868B6A2EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{4B9409DE-9A82-4B0C-870E-4617EB88CF40}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "Packages.mdproj", "{08A56AE7-6BBB-4966-8F0E-A8EA18A8E273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Debug|x86.ActiveCfg = Debug|x86
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Debug|x86.Build.0 = Debug|x86
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Release|x86.ActiveCfg = Release|x86
+		{0866890C-3988-47CB-A24A-A3D868B6A2EA}.Release|x86.Build.0 = Release|x86
+		{08A56AE7-6BBB-4966-8F0E-A8EA18A8E273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A56AE7-6BBB-4966-8F0E-A8EA18A8E273}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08A56AE7-6BBB-4966-8F0E-A8EA18A8E273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A56AE7-6BBB-4966-8F0E-A8EA18A8E273}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B9409DE-9A82-4B0C-870E-4617EB88CF40}.Release|x86.Build.0 = Release|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Debug|x86.Build.0 = Debug|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE89B6F7-7DB2-4BCB-A0F0-0F75AAD68450}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.AfterDelegateDeclarationParameterComma = True
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		$0.VersionControlPolicy = $4
+		$4.inheritsSet = Mono
+		version = 1.0.0
+	EndGlobalSection
+EndGlobal
