@@ -65,6 +65,18 @@ namespace UnitTest
 			Assert.IsTrue(bCompare);
 		}
 
+		[Test()]
+		public void testSha1_InputStream()
+		{
+			Console.Out.WriteLine("sha1");
+			using (MemoryStream instream = new MemoryStream(UTF8Encoding.UTF8.GetBytes(TEST_DATA)))
+			{
+				String expResult = "526d5ab7f4f28b1db8d2a4f54e3f93cbc38d7a5d";
+				String result = DigestSHA.sha1(instream);
+				Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+				Assert.IsTrue(bCompare);
+			}
+		}
 	}
 }
 

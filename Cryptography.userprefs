@@ -1,9 +1,30 @@
-﻿<Properties StartupItem="UnitTest/UnitTest.csproj">
+﻿<Properties StartupItem="Examples/Examples.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Cryptography/AESService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTest/common/DigestSHATest.cs">
     <Files>
-      <File FileName="Cryptography/AESService.cs" Line="6" Column="1" />
+      <File FileName="UnitTest/common/DigestSHATest.cs" Line="67" Column="3" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Cryptography" expanded="True">
+            <Node name="cryptography" expanded="True">
+              <Node name="common" expanded="True" />
+            </Node>
+            <Node name="UnitTest" expanded="True">
+              <Node name="common" expanded="True">
+                <Node name="DigestSHATest.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="Cryptography" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

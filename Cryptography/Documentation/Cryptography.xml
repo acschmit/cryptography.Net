@@ -304,7 +304,7 @@
             <param name="data">The byte array to be encoded.</param>
             <param name="digest">The digest to be used.</param>
             <returns>Hashed value of the byte array as a hex string.</returns></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.encode(System.IO.FileStream,Org.BouncyCastle.Crypto.IDigest)">
+        <member name="M:org.albertschmitt.crypto.DigestSHA.encode(System.IO.Stream,Org.BouncyCastle.Crypto.IDigest)">
             <summary>
             Encode the stream with the given digest.
             </summary>
@@ -316,7 +316,7 @@
             Return the md5 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.md5(System.IO.FileStream)">
+        <member name="M:org.albertschmitt.crypto.DigestSHA.md5(System.IO.Stream)">
             <summary>
             Return the md5 hash of the stream.
             </summary>
@@ -326,7 +326,7 @@
             Return the sha1 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha1(System.IO.FileStream)">
+        <member name="M:org.albertschmitt.crypto.DigestSHA.sha1(System.IO.Stream)">
             <summary>
             Return the sha1 hash of the stream.
             </summary>
@@ -336,7 +336,7 @@
             Return the sha256 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha256(System.IO.FileStream)">
+        <member name="M:org.albertschmitt.crypto.DigestSHA.sha256(System.IO.Stream)">
             <summary>
             Return the sha256 hash of the stream.
             </summary>
@@ -346,7 +346,7 @@
             Return the sha384 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha384(System.IO.FileStream)">
+        <member name="M:org.albertschmitt.crypto.DigestSHA.sha384(System.IO.Stream)">
             <summary>
             Return the sha384 hash of the stream.
             </summary>
@@ -356,7 +356,7 @@
             Return the sha512 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha512(System.IO.FileStream)">
+        <member name="M:org.albertschmitt.crypto.DigestSHA.sha512(System.IO.Stream)">
             <summary>
             Return the sha512 hash of the stream.
             </summary>

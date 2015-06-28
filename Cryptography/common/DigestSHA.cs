@@ -57,7 +57,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="instream">The stream to be encoded.</param>
 		/// <param name="digest">The digest to be used.</param>
 		/// <returns>Hashed value of the stream as a hex string.</returns>
-		private static string encode(FileStream instream , IDigest digest)
+		private static string encode(Stream instream , IDigest digest)
 		{
 			byte[] buffer = new byte[BUFFER_SIZE];
 			int read;
@@ -84,7 +84,7 @@ namespace org.albertschmitt.crypto
 		/// Return the md5 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string md5(FileStream instream)
+		public static string md5(Stream instream)
 		{
 			MD5Digest digest = new MD5Digest();
 			return encode(instream, digest);
@@ -104,7 +104,7 @@ namespace org.albertschmitt.crypto
 		/// Return the sha1 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha1(FileStream instream)
+		public static string sha1(Stream instream)
 		{
 			Sha1Digest digest = new Sha1Digest();
 			return encode(instream, digest);
@@ -124,7 +124,7 @@ namespace org.albertschmitt.crypto
 		/// Return the sha256 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha256(FileStream instream)
+		public static string sha256(Stream instream)
 		{
 			Sha256Digest digest = new Sha256Digest();
 			return encode(instream, digest);
@@ -144,7 +144,7 @@ namespace org.albertschmitt.crypto
 		/// Return the sha384 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha384(FileStream instream)
+		public static string sha384(Stream instream)
 		{
 			Sha384Digest digest = new Sha384Digest();
 			return encode(instream, digest);
@@ -164,7 +164,7 @@ namespace org.albertschmitt.crypto
 		/// Return the sha512 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha512(FileStream instream)
+		public static string sha512(Stream instream)
 		{
 			Sha512Digest digest = new Sha512Digest();
 			return encode(instream, digest);
