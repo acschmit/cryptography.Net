@@ -55,7 +55,7 @@ namespace org.albertschmitt.crypto
 		/**
 	 	 * The size in bytes of the salt.
 	 	 */
-		private const int		SALT_SIZE		= 32;
+		public const int		SALT_SIZE		= 32;
 
 		private const int		IV_LENGTH		= 16;
 		private const int		AES_128			= 128;

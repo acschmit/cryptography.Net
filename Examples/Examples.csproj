@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\Cryptography\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -37,6 +40,7 @@
     <Compile Include="Example_020.cs" />
     <Compile Include="Support.cs" />
     <Compile Include="Example_030.cs" />
+    <Compile Include="Example_060.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
