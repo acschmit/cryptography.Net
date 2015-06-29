@@ -1,22 +1,14 @@
 ﻿<Properties StartupItem="Examples/Examples.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Examples/Example_060.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Cryptography/RSAService.cs">
     <Files>
-      <File FileName="Examples/Example_060.cs" Line="17" Column="49" />
-      <File FileName="Cryptography/AESService.cs" Line="275" Column="73" />
-      <File FileName="Examples/Program.cs" Line="14" Column="3" />
+      <File FileName="Cryptography/RSAService.cs" Line="67" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Cryptography" expanded="True">
-            <Node name="cryptography" expanded="True">
-              <Node name="common" expanded="True" />
-            </Node>
-            <Node name="Examples" expanded="True">
-              <Node name="References" expanded="True" />
-              <Node name="Example_060.cs" selected="True" />
-            </Node>
+          <Node name="Cryptography" expanded="True" selected="True">
+            <Node name="cryptography" expanded="True" />
           </Node>
         </State>
       </Pad>

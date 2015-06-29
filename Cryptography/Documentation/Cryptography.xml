@@ -13,10 +13,37 @@
             External Dependencies:
             Bouncy Castle Release 1.7
             </summary></member>
+        <member name="F:org.albertschmitt.crypto.RSAService.RSA_2K">
+            <summary>
+            2048 bit key size.
+            </summary></member>
+        <member name="F:org.albertschmitt.crypto.RSAService.RSA_3K">
+            <summary>
+            3072 bit key.
+            </summary></member>
+        <member name="F:org.albertschmitt.crypto.RSAService.RSA_4K">
+            <summary>
+            4096 bit key size.
+            </summary></member>
         <member name="M:org.albertschmitt.crypto.RSAService.#ctor">
             <summary>
             Create an instance of the <see cref="T:org.albertschmitt.crypto.RSAService" /> class using a 2048 bit key.
             </summary></member>
+        <member name="M:org.albertschmitt.crypto.RSAService.getRSAKeySize">
+            <summary>
+            Returns the RSA key size. This is a protected function so the programmer
+            can changed the default key size to 4096 bits by sub-classing this
+            RSAService and using #setRSAKeySize(int key_size) in the constructor to
+            change it.
+            </summary>
+            <returns>The key size.</returns></member>
+        <member name="M:org.albertschmitt.crypto.RSAService.setRSAKeySize(System.Int32)">
+            <summary>
+            Inherit from this class and call this function in the constructor to set
+            the key size if you want it to be 3072 or 4096 bits instead of the
+            default.
+            </summary>
+            <param name="key_size">The desired RSA key size.</param></member>
         <member name="M:org.albertschmitt.crypto.RSAService.concatenate(System.Byte[],System.Byte[])">
             <summary>
             Concatenate two byte arrays together.
