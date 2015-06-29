@@ -1,8 +1,10 @@
-﻿<Properties StartupItem="Examples/Examples.csproj">
+﻿<Properties StartupItem="Examples/Examples.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Cryptography/RSAService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTest/RSAServiceTest.cs">
     <Files>
-      <File FileName="Cryptography/RSAService.cs" Line="67" Column="18" />
+      <File FileName="Cryptography/RSAService.cs" Line="85" Column="3" />
+      <File FileName="UnitTest/MySetupClass.cs" Line="14" Column="1" />
+      <File FileName="UnitTest/RSAServiceTest.cs" Line="30" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

@@ -33,8 +33,8 @@ namespace UnitTest
 	[TestFixture()]
 	public class RSAServiceTest
 	{
-		private const string privateKeyfile = "./private_key.pem";
-		private const string publicKeyfile = "./public_key.pem";
+		public const string privateKeyfile = "./private_key.pem";
+		public const string publicKeyfile = "./public_key.pem";
 
 		private byte[] msgBytes;
 

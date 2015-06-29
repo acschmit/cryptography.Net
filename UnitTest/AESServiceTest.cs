@@ -37,7 +37,7 @@ namespace UnitTest
 		private byte[] msgBytes;
         private string msgString;
 
-		private const string SALT_DAT = "./salt.dat";
+		public const string SALT_DAT = "./salt.dat";
 		const int SALT_LENGTH = 32;
 
 		public AESServiceTest()

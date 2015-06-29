@@ -51,68 +51,56 @@ namespace org.albertschmitt.crypto
 	/// </summary>
 	public class RSAService
 	{
-		private int key_size;	// size of the RSA Key.
-		private int enc_length;		// max len of the encrypted byte array.
+		/// <summary>
+		/// KEYSIZE enumaration.
+		/// </summary>
+		public enum KEYSIZE
+		{
+			/// <summary>
+			/// 2048, 3072 or bit key.
+			/// </summary>
+			RSA_2K = 2048,
 
+			/// <summary>
+			/// 3072 bit key.
+			/// </summary>
+			RSA_3K = 3072,
+
+			/// <summary>
+			/// 4096 bit key.
+			/// </summary>
+			RSA_4K = 4096
+		}
+
+		private KEYSIZE keysize;
 		private const int PADDING_PKCS1	= 11;
-
-		/// <summary>
-		/// 2048 bit key size.
-		/// </summary>
-		protected const int RSA_2K = 1024 * 2;
-
-		/// <summary>
-		/// 3072 bit key.
-		/// </summary>
-		protected const int RSA_3K = 1024 * 3;
-
-		/// <summary>
-		/// 4096 bit key size.
-		/// </summary>
-		protected const int RSA_4K = 1024 * 3;
 
 		/// <summary>
 		/// Create an instance of the <see cref="RSAService"/> class using a 2048 bit key.
 		/// </summary>
 		public RSAService()
 		{
-			calcSize(RSA_2K);
-		}
-
-		private void calcSize(int key_size)
-		{
-			this.key_size = key_size;
-			this.enc_length = key_size / 8;
+			keysize = KEYSIZE.RSA_2K;
 		}
 
 		/// <summary>
-		/// Returns the RSA key size. This is a protected function so the programmer
-		/// can changed the default key size to 4096 bits by sub-classing this
-		/// RSAService and using #setRSAKeySize(int key_size) in the constructor to
-		/// change it.
+		/// Create an instance of the <see cref="RSAService"/> class using the
+		/// specified key size.
 		/// </summary>
-		/// <returns>The key size.</returns>
-		protected int getRSAKeySize()
+		/// <param name="keysize">The key size to create.</param>
+		public RSAService(KEYSIZE keysize)
 		{
-			return key_size;
+			this.keysize = keysize;
 		}
 
-		/// <summary>
-		/// Inherit from this class and call this function in the constructor to set
-		/// the key size if you want it to be 3072 or 4096 bits instead of the
-		/// default.
-		/// </summary>
-		/// <param name="key_size">The desired RSA key size.</param>
-		protected void setRSAKeySize(int key_size)
+		private int getKeySize()
 		{
-			if (key_size == RSA_2K || key_size == RSA_3K || key_size == RSA_4K)
-			{
-				calcSize(key_size);
-			}
-			else
-			{
-				throw new Exception("Illegal RSA key size.  Must be 2048 or 4096");
-			}
+			return (int)keysize;
+		}
+
+		private int getEncLength()
+		{
+			return (int)keysize / 8;
 		}
 
 		/// <summary>
@@ -157,7 +145,7 @@ namespace org.albertschmitt.crypto
 		{
 			IAsymmetricBlockCipher cipher = AsymmetricBlockCipher(key, forEncryption);
 
-			int max_length =(forEncryption) ? enc_length - PADDING_PKCS1 : enc_length;
+			int max_length =(forEncryption) ? getEncLength() - PADDING_PKCS1 : getEncLength();
 			int blocksize = max_length;
 			int offset = 0;
 			byte[] bytes = new byte[0];
@@ -191,7 +179,7 @@ namespace org.albertschmitt.crypto
 		{
 			IAsymmetricBlockCipher cipher = AsymmetricBlockCipher(key, forEncryption);
 
-			int max_length =(forEncryption) ? enc_length - PADDING_PKCS1 : enc_length;
+			int max_length =(forEncryption) ? getEncLength() - PADDING_PKCS1 : getEncLength();
 			byte[] inbuf = new byte[max_length];
 			int blocksize = max_length;
 
@@ -446,7 +434,7 @@ namespace org.albertschmitt.crypto
 		public void generateKey(Stream os_private, Stream os_public)
 		{
 			RsaKeyPairGenerator kpg = new RsaKeyPairGenerator();
-			KeyGenerationParameters kparams = new KeyGenerationParameters(new SecureRandom(), key_size);
+			KeyGenerationParameters kparams = new KeyGenerationParameters(new SecureRandom(), getKeySize());
 			kpg.Init(kparams);
 			AsymmetricCipherKeyPair keyPair = kpg.GenerateKeyPair();
 
