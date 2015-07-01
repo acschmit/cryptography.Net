@@ -24,7 +24,7 @@
 using System;
 using Org.BouncyCastle.Crypto;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// This class represents a strongly typed private RSA key.
@@ -37,7 +37,7 @@ namespace org.albertschmitt.crypto
 		/// Sets the AsymmetricCipherKeyPair.
 		/// </summary>
 		/// <returns>The pki.</returns>
-		public AsymmetricCipherKeyPair setPki()
+		public AsymmetricCipherKeyPair GetPki()
 		{
 			return this.pki;
 		}
@@ -46,10 +46,10 @@ namespace org.albertschmitt.crypto
 		/// Gets the AsymmetricCipherKeyPair.
 		/// </summary>
 		/// <param name="acp">Acp.</param>
-		public void setPki(AsymmetricCipherKeyPair acp)
+		public void SetPki(AsymmetricCipherKeyPair acp)
 		{
 			this.pki = acp;
-			setKey(pki.Private);
+			SetKey(pki.Private);
 		}
 	}
 }

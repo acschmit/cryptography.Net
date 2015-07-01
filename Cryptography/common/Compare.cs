@@ -23,7 +23,7 @@
  */
 using System;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// Cryptographically safe comparison functions. These functions should take
@@ -39,7 +39,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="a">byte array 1.</param>
 		/// <param name="b">byte array 2.</param>
 		/// <returns><c>true</c> if byte arrays are equal, <c>false</c> if not.</returns>
-		public static Boolean safeEquals(byte[] a, byte[] b)
+		public static Boolean SafeEquals(byte[] a, byte[] b)
 		{
 			int diff = a.Length ^ b.Length;
 			for (int i = 0; i < a.Length && i < b.Length; i++)

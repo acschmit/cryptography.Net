@@ -1,25 +1,9 @@
 ﻿<Properties StartupItem="Examples/Examples.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UnitTest/RSAServiceTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Examples/Program.cs">
     <Files>
-      <File FileName="Cryptography/RSAService.cs" Line="85" Column="3" />
-      <File FileName="UnitTest/MySetupClass.cs" Line="14" Column="1" />
-      <File FileName="UnitTest/RSAServiceTest.cs" Line="30" Column="1" />
+      <File FileName="Examples/Program.cs" Line="8" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Cryptography" expanded="True" selected="True">
-            <Node name="cryptography" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node name="Cryptography" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

@@ -23,7 +23,7 @@
  */
 using System;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// This class represents a strongly typed private RSA key.

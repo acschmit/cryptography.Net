@@ -25,7 +25,7 @@
 using System;
 using System.Text;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// Convert byte arrays to hexadecimal strings and visa-versa. This class is
@@ -38,7 +38,7 @@ namespace org.albertschmitt.crypto
 		/// reverses the action of the encode(byte data[]) function.
 		/// </summary>
 		/// <param name="hexString">A hexadecimal string.</param>
-		public static byte[] decode(String hexString)
+		public static byte[] Decode(String hexString)
 		{
 			var len = hexString.Length;
 			byte[] data = new byte[len / 2];
@@ -55,7 +55,7 @@ namespace org.albertschmitt.crypto
 		/// Convert a byte array into a hexadecimal string.
 		/// </summary>
 		/// <param name="data">The byte array to be converted into a hexadecimal string.</param>
-		public static string encode(byte[] data)
+		public static string Encode(byte[] data)
 		{
 			string hexString = BitConverter.ToString(data);
 			hexString = hexString.Replace("-", "");

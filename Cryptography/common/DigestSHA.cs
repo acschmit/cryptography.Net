@@ -27,7 +27,7 @@ using Org.BouncyCastle.Utilities.Encoders;
 using Org.BouncyCastle.Crypto;
 using System.IO;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// SHA classes.
@@ -43,12 +43,12 @@ namespace org.albertschmitt.crypto
 		/// <param name="data">The byte array to be encoded.</param>
 		/// <param name="digest">The digest to be used.</param>
 		/// <returns>Hashed value of the byte array as a hex string.</returns>
-		private static string encode(byte[] data, IDigest digest)
+		private static string Encode(byte[] data, IDigest digest)
 		{
 			digest.BlockUpdate(data, 0, data.Length);
 			byte[] output = new byte[digest.GetDigestSize()];
 			digest.DoFinal (output, 0);
-			return Hex.encode(output);
+			return Hex.Encode(output);
 		}
 
 		/// <summary>
@@ -57,7 +57,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="instream">The stream to be encoded.</param>
 		/// <param name="digest">The digest to be used.</param>
 		/// <returns>Hashed value of the stream as a hex string.</returns>
-		private static string encode(Stream instream , IDigest digest)
+		private static string Encode(Stream instream , IDigest digest)
 		{
 			byte[] buffer = new byte[BUFFER_SIZE];
 			int read;
@@ -67,107 +67,107 @@ namespace org.albertschmitt.crypto
 			}
 			byte[] output = new byte[digest.GetDigestSize()];
 			digest.DoFinal(output, 0);
-			return Hex.encode(output);
+			return Hex.Encode(output);
 		}
 
 		/// <summary>
 		/// Return the md5 hash of the byte array.
 		/// </summary>
 		/// <param name="data">Data to be hashed.</param>
-		public static string md5(byte[] data)
+		public static string MD5(byte[] data)
 		{
 			MD5Digest digest = new MD5Digest();
-			return encode(data, digest);
+			return Encode(data, digest);
 		}
 
 		/// <summary>
 		/// Return the md5 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string md5(Stream instream)
+		public static string MD5(Stream instream)
 		{
 			MD5Digest digest = new MD5Digest();
-			return encode(instream, digest);
+			return Encode(instream, digest);
 		}
 
 		/// <summary>
 		/// Return the sha1 hash of the byte array.
 		/// </summary>
 		/// <param name="data">Data to be hashed.</param>
-		public static string sha1(byte[] data)
+		public static string Sha1(byte[] data)
 		{
 			Sha1Digest digest = new Sha1Digest();
-			return encode(data, digest);
+			return Encode(data, digest);
 		}
 
 		/// <summary>
 		/// Return the sha1 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha1(Stream instream)
+		public static string Sha1(Stream instream)
 		{
 			Sha1Digest digest = new Sha1Digest();
-			return encode(instream, digest);
+			return Encode(instream, digest);
 		}
 
 		/// <summary>
 		/// Return the sha256 hash of the byte array.
 		/// </summary>
 		/// <param name="data">Data to be hashed.</param>
-		public static string sha256(byte[] data)
+		public static string Sha256(byte[] data)
 		{
 			Sha256Digest digest = new Sha256Digest();
-			return encode(data, digest);
+			return Encode(data, digest);
 		}
 
 		/// <summary>
 		/// Return the sha256 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha256(Stream instream)
+		public static string Sha256(Stream instream)
 		{
 			Sha256Digest digest = new Sha256Digest();
-			return encode(instream, digest);
+			return Encode(instream, digest);
 		}
 
 		/// <summary>
 		/// Return the sha384 hash of the byte array.
 		/// </summary>
 		/// <param name="data">Data to be hashed.</param>
-		public static string sha384(byte[] data)
+		public static string Sha384(byte[] data)
 		{
 			Sha384Digest digest = new Sha384Digest();
-			return encode(data, digest);
+			return Encode(data, digest);
 		}
 
 		/// <summary>
 		/// Return the sha384 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha384(Stream instream)
+		public static string Sha384(Stream instream)
 		{
 			Sha384Digest digest = new Sha384Digest();
-			return encode(instream, digest);
+			return Encode(instream, digest);
 		}
 
 		/// <summary>
 		/// Return the sha512 hash of the byte array.
 		/// </summary>
 		/// <param name="data">Data to be hashed.</param>
-		public static string sha512(byte[] data)
+		public static string Sha512(byte[] data)
 		{
 			Sha512Digest digest = new Sha512Digest();
-			return encode(data, digest);
+			return Encode(data, digest);
 		}
 
 		/// <summary>
 		/// Return the sha512 hash of the stream.
 		/// </summary>
 		/// <param name="instream">Data to be hashed.</param>
-		public static string sha512(Stream instream)
+		public static string Sha512(Stream instream)
 		{
 			Sha512Digest digest = new Sha512Digest();
-			return encode(instream, digest);
+			return Encode(instream, digest);
 		}
 	}
 }

@@ -34,11 +34,11 @@ using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
 using Org.BouncyCastle.OpenSsl;
-using org.albertschmitt.crypto;
+using Org.AlbertSchmitt.Crypto;
 using Org.BouncyCastle.Asn1;
 using System.Text;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// This class implements RSA private/public key encryption with a 2048 bit key
@@ -93,12 +93,12 @@ namespace org.albertschmitt.crypto
 			this.keysize = keysize;
 		}
 
-		private int getKeySize()
+		private int GetKeySize()
 		{
 			return (int)keysize;
 		}
 
-		private int getEncLength()
+		private int GetEncLength()
 		{
 			return (int)keysize / 8;
 		}
@@ -109,7 +109,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="a">First byte array.</param>
 		/// <param name="b">Second byte array.</param>
 		/// <returns>Byte array containing First + Second byte array.</returns>
-		private byte[] concatenate(byte[] a, byte[] b)
+		private byte[] Concatenate(byte[] a, byte[] b)
 		{
 			byte[] dest = new byte[a.Length + b.Length];
 			Buffer.BlockCopy(a, 0, dest, 0, a.Length);
@@ -126,7 +126,7 @@ namespace org.albertschmitt.crypto
 		/// <returns>IAsymmetricBlockCipher configured to encrypt or decrypt.</returns>
 		static IAsymmetricBlockCipher AsymmetricBlockCipher(Key key, bool forEncryption)
 		{
-			RsaKeyParameters rsaKey =(RsaKeyParameters)key.getKey();
+			RsaKeyParameters rsaKey =(RsaKeyParameters)key.GetKey();
 			IAsymmetricBlockCipher cipher = new RsaEngine();
 			cipher = new Org.BouncyCastle.Crypto.Encodings.Pkcs1Encoding(cipher);
 			cipher.Init(forEncryption, rsaKey);
@@ -141,11 +141,11 @@ namespace org.albertschmitt.crypto
 		/// <param name="key">The key to be used.</param>
 		/// <param name="forEncryption"><c>true</c> to encrypt, <c>false</c> to decrypt.</param>
 		/// <returns>The encrypted data.</returns>
-		private byte[] doCipher(byte[] data, Key key, Boolean forEncryption)
+		private byte[] DoCipher(byte[] data, Key key, Boolean forEncryption)
 		{
 			IAsymmetricBlockCipher cipher = AsymmetricBlockCipher(key, forEncryption);
 
-			int max_length =(forEncryption) ? getEncLength() - PADDING_PKCS1 : getEncLength();
+			int max_length =(forEncryption) ? GetEncLength() - PADDING_PKCS1 : GetEncLength();
 			int blocksize = max_length;
 			int offset = 0;
 			byte[] bytes = new byte[0];
@@ -157,7 +157,7 @@ namespace org.albertschmitt.crypto
 				if(blocksize != 0)
 				{
 					byte[] enc = cipher.ProcessBlock(data, offset, blocksize);
-					bytes = concatenate(bytes, enc);
+					bytes = Concatenate(bytes, enc);
 				}
 				offset += max_length;
 			}
@@ -175,11 +175,11 @@ namespace org.albertschmitt.crypto
 		/// <param name="outstream">The encrypted stream.</param>
 		/// <param name="key">The key to be used.</param>
 		/// <param name="forEncryption"><c>true</c> to encrypt, <c>false</c> to decrypt.</param>
-		private void doCipher(Stream instream, Stream outstream, Key key, Boolean forEncryption)
+		private void DoCipher(Stream instream, Stream outstream, Key key, Boolean forEncryption)
 		{
 			IAsymmetricBlockCipher cipher = AsymmetricBlockCipher(key, forEncryption);
 
-			int max_length =(forEncryption) ? getEncLength() - PADDING_PKCS1 : getEncLength();
+			int max_length =(forEncryption) ? GetEncLength() - PADDING_PKCS1 : GetEncLength();
 			byte[] inbuf = new byte[max_length];
 			int blocksize = max_length;
 
@@ -197,9 +197,9 @@ namespace org.albertschmitt.crypto
 		/// <param name="data">The byte array to be encoded.</param>
 		/// <param name="key">The key to be used.</param>
 		/// <returns>The RSA encoded data.</returns>
-		public byte[] encode(byte[] data, Key key)
+		public byte[] Encode(byte[] data, Key key)
 		{
-			return doCipher(data, key, true);
+			return DoCipher(data, key, true);
 		}
 
 		/// <summary>
@@ -208,10 +208,10 @@ namespace org.albertschmitt.crypto
 		/// <param name="data">The String to be encoded.</param>
 		/// <param name="key">The key to be used.</param>
 		/// <returns>The RSA encoded data.</returns>
-		public byte[] encode(String data, Key key)
+		public byte[] Encode(String data, Key key)
 		{
 			byte[] bytes = UTF8Encoding.UTF8.GetBytes(data);
-			return doCipher(bytes, key, true);
+			return DoCipher(bytes, key, true);
 		}
 
 		/// <summary>
@@ -220,9 +220,9 @@ namespace org.albertschmitt.crypto
 		/// <param name="data">RSA encoded byte array.</param>
 		/// <param name="key">The key to be used.</param>
 		/// <returns>Decoded byte array of RSA encoded input data.</returns>
-		public byte[] decode(byte[] data, Key key)
+		public byte[] Decode(byte[] data, Key key)
 		{
-			return doCipher(data, key, false);
+			return DoCipher(data, key, false);
 		}
 
 		/// <summary>
@@ -231,10 +231,10 @@ namespace org.albertschmitt.crypto
 		/// <param name="data">RSA encoded String.</param>
 		/// <param name="key">The key to be used.</param>
 		/// <returns>Decoded byte array of RSA encoded input data.</returns>
-		public byte[] decode(String data, Key key)
+		public byte[] Decode(String data, Key key)
 		{
 			byte[] bytes = UTF8Encoding.UTF8.GetBytes(data);
-			return doCipher(bytes, key, true);
+			return DoCipher(bytes, key, true);
 		}
 
 		/// <summary>
@@ -243,9 +243,9 @@ namespace org.albertschmitt.crypto
 		/// <param name="instream">Stream to be encoded.</param>
 		/// <param name="outstream">RSA encoded output stream of input stream.</param>
 		/// <param name="key">The key to be used.</param>
-		public void encode(Stream instream, Stream outstream, Key key)
+		public void Encode(Stream instream, Stream outstream, Key key)
 		{
-			doCipher(instream, outstream, key, true);
+			DoCipher(instream, outstream, key, true);
 		}
 
 		/// <summary>
@@ -254,9 +254,9 @@ namespace org.albertschmitt.crypto
 		/// <param name="instream">RSA encoded input stream to be decoded.</param>
 		/// <param name="outstream">Decoded output stream of input stream.</param>
 		/// <param name="key">The key to be used.</param>
-		public void decode(Stream instream, Stream outstream, Key key)
+		public void Decode(Stream instream, Stream outstream, Key key)
 		{
-			doCipher(instream, outstream, key, false);
+			DoCipher(instream, outstream, key, false);
 		}
 
 		/// <summary>
@@ -264,12 +264,12 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="filename">The file that contains the RSA Private Key.</param>
 		/// <returns>The RSAPrivateKey.</returns>
-		public RSAPrivateKey readPrivateKey(string filename)
+		public RSAPrivateKey ReadPrivateKey(string filename)
 		{
 			RSAPrivateKey key = null;
 			using (FileStream instream = new FileStream (filename, FileMode.Open)) 
 			{
-				key = readPrivateKey(instream);
+				key = ReadPrivateKey(instream);
 			}
 			return key;
 		}
@@ -279,7 +279,7 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="instream">The input stream that contains the RSA Private Key.</param>
 		/// <returns>The RSAPrivateKey.</returns>
-		public RSAPrivateKey readPrivateKey(Stream instream)
+		public RSAPrivateKey ReadPrivateKey(Stream instream)
 		{
 			RSAPrivateKey key = new RSAPrivateKey();
 			using(StreamReader reader = new StreamReader(instream))
@@ -287,7 +287,7 @@ namespace org.albertschmitt.crypto
 				PemReader pem = new PemReader(reader);
 				AsymmetricCipherKeyPair acp =(AsymmetricCipherKeyPair)pem.ReadObject();
 				pem.Reader.Close();
-				key.setPki(acp);
+				key.SetPki(acp);
 			}
 			return key;
 		}
@@ -297,12 +297,12 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="filename">The file that contains the RSA Public Key.</param>
 		/// <returns>The RSAPublicKey.</returns>
-		public RSAPublicKey readPublicKey(string filename)
+		public RSAPublicKey ReadPublicKey(string filename)
 		{
 			RSAPublicKey key = null;
 			using (FileStream instream = new FileStream (filename, FileMode.Open)) 
 			{
-				key = readPublicKey (instream);
+				key = ReadPublicKey(instream);
 			}
 			return key;
 		}
@@ -312,53 +312,84 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="instream">The input stream that contains the RSA Public Key.</param>
 		/// <returns>The RSAPublicKey.</returns>
-		public RSAPublicKey readPublicKey(Stream instream)
+		public RSAPublicKey ReadPublicKey(Stream instream)
 		{
 			RSAPublicKey key = new RSAPublicKey();
 			using(StreamReader reader = new StreamReader(instream))
 			{
 				PemReader pem = new PemReader(reader);
-				key.setKey((AsymmetricKeyParameter)pem.ReadObject());
+				key.SetKey((AsymmetricKeyParameter)pem.ReadObject());
 				pem.Reader.Close();
 			}
 			return key;
 		}
 
-		// ** Implement below to match Java **
-		// public RSAPublicKey readPublicKeyFromPrivate(String filename)
-		// public RSAPublicKey readPublicKeyFromPrivate(InputStream in)
-
 		/// <summary>
-		/// Reads the public Key Der.
+		/// Extract the Public Key from the RSA Private Key from the file and return
+		/// it to the client.
 		/// </summary>
-		/// <returns>The public key der.</returns>
-		/// <param name="filename">The file name of the Key Der.</param>
-		public RSAPublicKey readPublicKeyDer(string filename)
+		/// <param name="filename">The file that contains the RSA Private Key.</param>
+		/// <returns>The RSAPublicKey.</returns>
+		public RSAPublicKey ReadPublicKeyFromPrivate(String filename)
 		{
 			RSAPublicKey key = null;
-			using (FileStream instream = new FileStream(filename, FileMode.Open))
+			using (FileStream instream = new FileStream (filename, FileMode.Open)) 
 			{
-				key = readPublicKeyDer(instream);
+				key = ReadPublicKeyFromPrivate(instream);
 			}
 			return key;
 		}
 
 		/// <summary>
-		/// Reads the public Key Der.
+		/// Extract the Public Key from the RSA Private Key from the input stream and
+		/// return it to the client.
 		/// </summary>
-		/// <returns>The public key der.</returns>
-		/// <param name="instream">The input stream that contains the Key Der.</param>
-		public RSAPublicKey readPublicKeyDer(Stream instream)
+		/// <param name="instream">The input stream that contains the RSA Private Key.</param>
+		/// <returns>The RSAPublicKey.</returns>
+		public RSAPublicKey ReadPublicKeyFromPrivate(Stream instream)
+		{
+			RSAPublicKey key = new RSAPublicKey();
+			using(StreamReader reader = new StreamReader(instream))
+			{
+				PemReader pem = new PemReader(reader);
+				AsymmetricCipherKeyPair acp = (AsymmetricCipherKeyPair)pem.ReadObject();
+				pem.Reader.Close();
+				key.SetKey(acp.Public);
+			}
+			return key;
+		}
+			
+		/// <summary>
+		/// Reads the public DER format key.
+		/// </summary>
+		/// <param name="filename">The file name of the DER format key.</param>
+		/// <returns>The RSAPublicKey.</returns>
+		public RSAPublicKey ReadPublicKeyDer(string filename)
+		{
+			RSAPublicKey key = null;
+			using (FileStream instream = new FileStream(filename, FileMode.Open))
+			{
+				key = ReadPublicKeyDer(instream);
+			}
+			return key;
+		}
+
+		/// <summary>
+		/// Reads the public DER format key.
+		/// </summary>
+		/// <param name="instream">The input stream that contains the key in DER format.</param>
+		/// <returns>The RSAPublicKey.</returns>
+		public RSAPublicKey ReadPublicKeyDer(Stream instream)
 		{
 			RSAPublicKey key = null;
 			using(MemoryStream ms = new MemoryStream())
 			{
 				instream.CopyTo(ms);
-				byte[] data =  ms.ToArray();
+				byte[] data = ms.ToArray();
 				AsymmetricKeyParameter keyParam = PublicKeyFactory.CreateKey(data);
 
 				key = new RSAPublicKey();
-				key.setKey (keyParam);
+				key.SetKey(keyParam);
 			}
 			return key;
 		}
@@ -369,7 +400,7 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="os">The stream to write the RSA key to.</param>
 		/// <param name="key">The Key to be written to the stream.</param>
-		private static void writeKey (Stream os, AsymmetricKeyParameter key)
+		private static void WriteKey (Stream os, AsymmetricKeyParameter key)
 		{
 			// Write the public or private key.
 			using (StreamWriter writer = new StreamWriter (os)) 
@@ -386,14 +417,14 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="keyPair">The Private Key.</param>
 		/// <param name="os">The stream the Private Key is to be written to.</param>
-		private void writePrivateKey(AsymmetricCipherKeyPair keyPair, Stream os)
+		private void WritePrivateKey(AsymmetricCipherKeyPair keyPair, Stream os)
 		{
 			// Extract the private key.
 			PrivateKeyInfo pki = PrivateKeyInfoFactory.CreatePrivateKeyInfo(keyPair.Private);
 			byte[] data = pki.ToAsn1Object().GetDerEncoded();
 
 			AsymmetricKeyParameter key = PrivateKeyFactory.CreateKey (data);
-			writeKey (os, key);
+			WriteKey (os, key);
 		}
 
 		/// <summary>
@@ -402,14 +433,14 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="keyPair">The Public Key.</param>
 		/// <param name="os">The stream the Public Key is to be written to.</param>
-		private void writePublicKey(AsymmetricCipherKeyPair keyPair, Stream os)
+		private void WritePublicKey(AsymmetricCipherKeyPair keyPair, Stream os)
 		{
 			// Extract the public key.
 			SubjectPublicKeyInfo pki = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(keyPair.Public);
 			byte[] data = pki.ToAsn1Object().GetDerEncoded();
 
 			AsymmetricKeyParameter key = PublicKeyFactory.CreateKey(data);
-			writeKey (os, key);
+			WriteKey (os, key);
 		}
 		
 		/// <summary>
@@ -418,11 +449,11 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="private_keyfile">The file name to which the RSA Private Key will be written.</param>
 		/// <param name="public_keyfile">public_filename The file name to which the RSA Public Key will be written.</param>
-		public void generateKey(string private_keyfile, string public_keyfile)
+		public void GenerateKey(string private_keyfile, string public_keyfile)
 		{
 			FileStream fos_private = new FileStream (private_keyfile, FileMode.Create);
 			FileStream fos_public = new FileStream (public_keyfile, FileMode.Create);
-			generateKey(fos_private, fos_public);
+			GenerateKey(fos_private, fos_public);
 		}
 
 		/// <summary>
@@ -431,15 +462,15 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="os_private">The stream to which the RSA Private Key will be written.</param>
 		/// <param name="os_public">The stream to which the RSA Public Key will be written.</param>
-		public void generateKey(Stream os_private, Stream os_public)
+		public void GenerateKey(Stream os_private, Stream os_public)
 		{
 			RsaKeyPairGenerator kpg = new RsaKeyPairGenerator();
-			KeyGenerationParameters kparams = new KeyGenerationParameters(new SecureRandom(), getKeySize());
+			KeyGenerationParameters kparams = new KeyGenerationParameters(new SecureRandom(), GetKeySize());
 			kpg.Init(kparams);
 			AsymmetricCipherKeyPair keyPair = kpg.GenerateKeyPair();
 
-			writePrivateKey(keyPair, os_private);
-			writePublicKey(keyPair, os_public);
+			WritePrivateKey(keyPair, os_private);
+			WritePublicKey(keyPair, os_public);
 		}
 
 		/// <summary>
@@ -449,7 +480,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="private_keyfile">The file containing the RSA Private Key.</param>
 		/// <param name="public_keyfile">The file containing the RSA Public Key.</param>
 		/// <returns><c>true</c> if the key pair exist <c>false</c> if they do not.</returns>
-		public Boolean areKeysPresent(string private_keyfile, string public_keyfile)
+		public Boolean AreKeysPresent(string private_keyfile, string public_keyfile)
 		{
 			Boolean bOK = false;
 			if(File.Exists(private_keyfile) && File.Exists(public_keyfile))

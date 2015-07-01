@@ -26,7 +26,7 @@ using NUnit.Framework;
 using System;
 using System.Text;
 using System.IO;
-using org.albertschmitt.crypto;
+using Org.AlbertSchmitt.Crypto;
 	
 namespace UnitTest
 {
@@ -44,108 +44,108 @@ namespace UnitTest
 		}
 
 		[Test()]
-		public void testMd5()
+		public void TestMd5()
 		{
 			Console.Out.WriteLine("md5");
 			byte[] data = UTF8Encoding.UTF8.GetBytes(TEST_DATA);
 			const string expResult = "8d51d5a313d44e1a7a9698731813add7";
-			String result = DigestSHA.md5(data);
-			Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+			String result = DigestSHA.MD5(data);
+			Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 			Assert.IsTrue(bCompare);
 		}
 
 		[Test()]
-		public void testSha1_byteArr()
+		public void TestSha1_byteArr()
 		{
 			Console.Out.WriteLine("sha1");
 			byte[] data = UTF8Encoding.UTF8.GetBytes(TEST_DATA);
 			const string expResult = "526d5ab7f4f28b1db8d2a4f54e3f93cbc38d7a5d";
-			String result = DigestSHA.sha1(data);
-			Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+			String result = DigestSHA.Sha1(data);
+			Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 			Assert.IsTrue(bCompare);
 		}
 
 		[Test()]
-		public void testSha1_InputStream()
+		public void TestSha1_InputStream()
 		{
 			Console.Out.WriteLine("sha1");
 			using (MemoryStream instream = new MemoryStream(UTF8Encoding.UTF8.GetBytes(TEST_DATA)))
 			{
 				const string expResult = "526d5ab7f4f28b1db8d2a4f54e3f93cbc38d7a5d";
-				String result = DigestSHA.sha1(instream);
-				Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+				String result = DigestSHA.Sha1(instream);
+				Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 				Assert.IsTrue(bCompare);
 			}
 		}
 
 		[Test()]
-		public void testSha256_byteArr()
+		public void TestSha256_byteArr()
 		{
 			Console.Out.WriteLine("256");
 			byte[] data = UTF8Encoding.UTF8.GetBytes(TEST_DATA);
 			const string expResult = "ae235deeace393d0f25bb9b768277b934eaa3812ce769b0121302ee09b20646f";
-			String result = DigestSHA.sha256(data);
-			Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+			String result = DigestSHA.Sha256(data);
+			Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 			Assert.IsTrue(bCompare);
 		}
 
 		[Test()]
-		public void testSha256_InputStream()
+		public void TestSha256_InputStream()
 		{
 			Console.Out.WriteLine("256");
 			using (MemoryStream instream = new MemoryStream(UTF8Encoding.UTF8.GetBytes(TEST_DATA)))
 			{
 				const string expResult = "ae235deeace393d0f25bb9b768277b934eaa3812ce769b0121302ee09b20646f";
-				String result = DigestSHA.sha256(instream);
-				Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+				String result = DigestSHA.Sha256(instream);
+				Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 				Assert.IsTrue(bCompare);
 			}
 		}
 
 		[Test()]
-		public void testSha384_byteArr()
+		public void TestSha384_byteArr()
 		{
 			Console.Out.WriteLine("384");
 			byte[] data = UTF8Encoding.UTF8.GetBytes(TEST_DATA);
 			const string expResult = "17cc84262caaca5692316af52b1d4d50d86e0ae51c28700538174da4c6935115583fa8ff55d3e644a9f02cd8d587018f";
-			String result = DigestSHA.sha384(data);
-			Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+			String result = DigestSHA.Sha384(data);
+			Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 			Assert.IsTrue(bCompare);
 		}
 
 		[Test()]
-		public void testSha384_InputStream()
+		public void TestSha384_InputStream()
 		{
 			Console.Out.WriteLine("384");
 			using (MemoryStream instream = new MemoryStream(UTF8Encoding.UTF8.GetBytes(TEST_DATA)))
 			{
 				const string expResult = "17cc84262caaca5692316af52b1d4d50d86e0ae51c28700538174da4c6935115583fa8ff55d3e644a9f02cd8d587018f";
-				String result = DigestSHA.sha384(instream);
-				Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+				String result = DigestSHA.Sha384(instream);
+				Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 				Assert.IsTrue(bCompare);
 			}
 		}
 
 		[Test()]
-		public void testSha512_byteArr()
+		public void TestSha512_byteArr()
 		{
 			Console.Out.WriteLine("512");
 			byte[] data = UTF8Encoding.UTF8.GetBytes(TEST_DATA);
 			const string expResult = "d1d63b225ce4d047c95e1809bf50830d960a5b649bf8f33914e2a7be58931adf50e570774f7de5574a0259f0df1338bba0b2e81b2be27ff30aff48d05bbba015";
-			String result = DigestSHA.sha512(data);
-			Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+			String result = DigestSHA.Sha512(data);
+			Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 			Assert.IsTrue(bCompare);
 		}
 
 		[Test()]
-		public void testSha512_InputStream()
+		public void TestSha512_InputStream()
 		{
 			Console.Out.WriteLine("512");
 			using (MemoryStream instream = new MemoryStream(UTF8Encoding.UTF8.GetBytes(TEST_DATA)))
 			{
 				const string expResult = "d1d63b225ce4d047c95e1809bf50830d960a5b649bf8f33914e2a7be58931adf50e570774f7de5574a0259f0df1338bba0b2e81b2be27ff30aff48d05bbba015";
-				String result = DigestSHA.sha512(instream);
-				Boolean bCompare = Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
+				String result = DigestSHA.Sha512(instream);
+				Boolean bCompare = Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(expResult), UTF8Encoding.UTF8.GetBytes(result));
 				Assert.IsTrue(bCompare);
 			}
 		}

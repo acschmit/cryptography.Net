@@ -27,7 +27,7 @@ For comprehensive examples either look at the Nunit Test or examine the Examples
 Adding AES256 encryption to your project can be as simple as this:
 ```java
 using System;
-using org.albertschmitt.crypto;
+using Org.AlbertSchmitt.Crypto;
 using Org.BouncyCastle.Security;
 using System.Text;
 

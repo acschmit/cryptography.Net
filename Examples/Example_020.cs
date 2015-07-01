@@ -1,5 +1,5 @@
 ﻿using System;
-using org.albertschmitt.crypto;
+using Org.AlbertSchmitt.Crypto;
 using System.IO;
 using System.Text;
 
@@ -11,20 +11,20 @@ namespace Examples
 		private const string privateKeyfile = "./Example_020_private_key.pem";
 		private const string publicKeyfile = "./Example_020_public_key.pem";
 
-		public static void main()
+		public static void Test()
 		{
 			Console.Out.WriteLine("Begin Example_020.");
 			// Create some data to test with.
-			Support.testData(TESTDATA_FILE);
+			Support.TestData(TESTDATA_FILE);
 
 			/**
 			 * Create a public / private RS key pair.
 			 */
 			RSAService rsa = new RSAService();
-			if (!rsa.areKeysPresent(privateKeyfile, publicKeyfile))
+			if (!rsa.AreKeysPresent(privateKeyfile, publicKeyfile))
 			{
 				Console.Out.WriteLine("Begin Create RSA Keys.");
-				rsa.generateKey(privateKeyfile, publicKeyfile);
+				rsa.GenerateKey(privateKeyfile, publicKeyfile);
 				Console.Out.WriteLine("End Create RSA Keys.");
 			}
 
@@ -35,8 +35,8 @@ namespace Examples
 			 * purposes.
 			 */
 			Console.Out.WriteLine("Begin Read RSA Keys.");
-			RSAPrivateKey privateKey = rsa.readPrivateKey(privateKeyfile);
-			RSAPublicKey publicKey = rsa.readPublicKey(publicKeyfile);
+			RSAPrivateKey privateKey = rsa.ReadPrivateKey(privateKeyfile);
+			RSAPublicKey publicKey = rsa.ReadPublicKey(publicKeyfile);
 			Console.Out.WriteLine("End Read RSA Keys.");
 
 			/**
@@ -52,22 +52,22 @@ namespace Examples
 			 * Use public key to encrypt a byte array to another byte array.
 			 */
 			Console.Out.WriteLine("Begin Encrypt Data.");
-			byte[] testdata_enc = rsa.encode(testdata_bytes, publicKey);
+			byte[] testdata_enc = rsa.Encode(testdata_bytes, publicKey);
 			Console.Out.WriteLine("End Encrypt Data.");
 
 			/**
 			 * Now decrypt the encrypted file using the private key.
 			 */
 			Console.Out.WriteLine("Begin Decrypt Data.");
-			byte[] testdata_dec = rsa.decode(testdata_enc, privateKey);
+			byte[] testdata_dec = rsa.Decode(testdata_enc, privateKey);
 			Console.Out.WriteLine("End Decrypt Data.");
 
 			/**
 			 * Compare the original and decrypted files.
 			 */
-			String shaOriginal = DigestSHA.sha256(testdata_bytes);
-			String shaDecripted = DigestSHA.sha256(testdata_dec);
-			if (Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(shaOriginal), UTF8Encoding.UTF8.GetBytes(shaDecripted)))
+			String shaOriginal = DigestSHA.Sha256(testdata_bytes);
+			String shaDecripted = DigestSHA.Sha256(testdata_dec);
+			if (Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(shaOriginal), UTF8Encoding.UTF8.GetBytes(shaDecripted)))
 			{
 				Console.Out.WriteLine("Encrypted and decrypted files are the same.");
 			}

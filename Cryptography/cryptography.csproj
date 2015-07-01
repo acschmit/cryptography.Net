@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0866890C-3988-47CB-A24A-A3D868B6A2EA}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>org.albertschmitt.crypto</RootNamespace>
-    <ReleaseVersion>1.0.2</ReleaseVersion>
+    <RootNamespace>Org.AlbertSchmitt.Crypto</RootNamespace>
+    <ReleaseVersion>1.0.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -29,7 +29,7 @@ using Org.BouncyCastle.Utilities.Encoders;
 using Org.BouncyCastle.Crypto;
 using System.Text;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// Keyed-Hash Message Authentication Code class.  Use this class to verify the
@@ -44,7 +44,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="msg">Message.</param>
 		/// <param name="keyBytes">The private key.</param>
 		/// <param name="algorithm">The digest to be used.</param>
-		private static string hmacDigest(byte[] msg, byte[] keyBytes, IDigest algorithm)
+		private static string HMacDigest(byte[] msg, byte[] keyBytes, IDigest algorithm)
 		{
 			HMac mac = new HMac(algorithm);
 			mac.Init(new KeyParameter(keyBytes));
@@ -53,7 +53,7 @@ namespace org.albertschmitt.crypto
 			byte[] data = new byte[mac.GetMacSize()];
 			mac.DoFinal (data, 0);
 
-			return Hex.encode(data);
+			return Hex.Encode(data);
 		}
 
 		/// <summary>
@@ -61,10 +61,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyString">The secret key to be used.</param>
-		public static string md5(string msg, string keyString)
+		public static string MD5(string msg, string keyString)
 		{
 			MD5Digest digest = new MD5Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
 		}
 
 		/// <summary>
@@ -72,10 +72,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyString">The secret key to be used.</param>
-		public static string sha1(string msg, string keyString)
+		public static string Sha1(string msg, string keyString)
 		{
 			Sha1Digest digest = new Sha1Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
 		}
 
 		/// <summary>
@@ -84,10 +84,10 @@ namespace org.albertschmitt.crypto
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyString">The secret key to be used.</param>
 
-		public static string sha256(string msg, string keyString)
+		public static string Sha256(string msg, string keyString)
 		{
 			Sha256Digest digest = new Sha256Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
 		}
 
 		/// <summary>
@@ -95,10 +95,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyString">The secret key to be used.</param>
-		public static string sha512(string msg, string keyString)
+		public static string Sha512(string msg, string keyString)
 		{
 			Sha512Digest digest = new Sha512Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), UTF8Encoding.UTF8.GetBytes(keyString), digest);
 		}
 
 		/// <summary>
@@ -106,10 +106,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyBytes">The secret key to be used.</param>
-		public static string md5(string msg, byte[] keyBytes)
+		public static string MD5(string msg, byte[] keyBytes)
 		{
 			MD5Digest digest = new MD5Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
 		}
 
 		/// <summary>
@@ -117,10 +117,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyBytes">The secret key to be used.</param>
-		public static string sha1(string msg, byte[] keyBytes)
+		public static string Sha1(string msg, byte[] keyBytes)
 		{
 			Sha1Digest digest = new Sha1Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
 		}
 
 		/// <summary>
@@ -128,10 +128,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyBytes">The secret key to be used.</param>
-		public static string sha256(string msg, byte[] keyBytes)
+		public static string Sha256(string msg, byte[] keyBytes)
 		{
 			Sha256Digest digest = new Sha256Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
 		}
 
 		/// <summary>
@@ -139,10 +139,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="msg">The message to be encoded.</param>
 		/// <param name="keyBytes">The secret key to be used.</param>
-		public static string sha512(string msg, byte[] keyBytes)
+		public static string Sha512(string msg, byte[] keyBytes)
 		{
 			Sha512Digest digest = new Sha512Digest();
-			return hmacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
+			return HMacDigest(ASCIIEncoding.ASCII.GetBytes(msg), keyBytes, digest);
 		}
 	}
 }

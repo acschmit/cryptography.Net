@@ -26,7 +26,7 @@ using NUnit.Framework;
 using System;
 using System.Text;
 using System.IO;
-using org.albertschmitt.crypto;
+using Org.AlbertSchmitt.Crypto;
 
 namespace UnitTest
 {
@@ -51,96 +51,96 @@ namespace UnitTest
 			msgBytes = UTF8Encoding.UTF8.GetBytes(msgString);
 			password = "ZJ=ENY'2H+0bm'oyIe6J";
 
-			testGenerateSalt();
+			TestGenerateSalt();
 		}
 
 		[Test()]
-		public void testGenerateSalt ()
+		public void TestGenerateSalt()
 		{
 			Console.Out.WriteLine("generateSalt");
 			AESService instance = new AESService();
-			byte[] saltBytes = instance.generateSalt();
+			byte[] saltBytes = instance.GenerateSalt();
 
-			writeSaltBytes(saltBytes);
+			WriteSaltBytes(saltBytes);
 
 			Assert.IsNotNull(saltBytes);
 		}
 
 
 		[Test()]
-		public void testGetAesKey ()
+		public void TestGetAesKey()
 		{
 			Console.Out.WriteLine("getAesKey");
 			AESService instance = new AESService();
-			instance.generateKey();
+			instance.GenerateKey();
 
-			byte[] result = instance.getAesKey();
+			byte[] result = instance.GetAesKey();
 
 			Assert.IsNotNull(result);
 		}
 
 		[Test()]
-		public void testGetHmac256Digest ()
+		public void TestGetHmac256Digest()
 		{
 			Console.Out.WriteLine("getHmac256Digest");
 
 			// Need to use a hard coded salt so we get a predictable result from getHmac256Digest().
 			string saltString = "253a3dd3a9aef71ca1fa2b8b3704d6724ba474342e3c2e4fd124ee74d2c56017f4a7c22951a99978c6fdfbbefb4cf775d5642ea6dcb4d9b8e164fc23099f36c4";
-			byte[] saltBytes = Hex.decode(saltString);
+			byte[] saltBytes = Hex.Decode(saltString);
 
 			AESService instance = new AESService();
-			instance.generateKey(password, saltBytes);
+			instance.GenerateKey(password, saltBytes);
 
-			String result = DigestSHA.sha512(msgBytes);
+			String result = DigestSHA.Sha512(msgBytes);
 			String expResult = "25296335d88536dddd09ffb7bcc09646dd9b3f537beb78cf89c76077d39daedd0cb8e46cf1e9b06a99e59e5b8b7f66f307978dc6413426b13d1f724a0a030529";
 
 			Assert.IsTrue(expResult == result);
 		}
 
 		[Test()]
-		public void testEncodeAndDecode_byteArr ()
+		public void TestEncodeAndDecode_byteArr()
 		{
 			Console.Out.WriteLine("encode and decode byte array");
 
-			byte[] saltBytes = readSaltBytes();
+			byte[] saltBytes = ReadSaltBytes();
 
 			AESService instance = new AESService();
-			instance.generateKey(password, saltBytes);
+			instance.GenerateKey(password, saltBytes);
 
-			byte[] encData = instance.encode(msgBytes);
-			byte[] decData = instance.decode(encData);
+			byte[] encData = instance.Encode(msgBytes);
+			byte[] decData = instance.Decode(encData);
 
-			Boolean bCompare = Compare.safeEquals(msgBytes, decData);
+			Boolean bCompare = Compare.SafeEquals(msgBytes, decData);
 			Assert.IsTrue(bCompare);
 		}
 
         [Test()]
-        public void testEncodeAndDecode_String()
+        public void TestEncodeAndDecode_String()
         {
             Console.Out.WriteLine("encode and decode byte string");
 
-            byte[] saltBytes = readSaltBytes();
+            byte[] saltBytes = ReadSaltBytes();
 
             AESService instance = new AESService();
-            instance.generateKey(password, saltBytes);
+            instance.GenerateKey(password, saltBytes);
 
-            byte[] encData = instance.encode(msgString);
-            string encString = Hex.encode(encData);
-            byte[] decData = instance.decode(encString);
+            byte[] encData = instance.Encode(msgString);
+            string encString = Hex.Encode(encData);
+            byte[] decData = instance.Decode(encString);
 
-            Boolean bCompare = Compare.safeEquals(msgBytes, decData);
+            Boolean bCompare = Compare.SafeEquals(msgBytes, decData);
             Assert.IsTrue(bCompare);
         }
 
 		[Test()]
-		public void testEncodeAndDecode_InputStream_OutputStream ()
+		public void TestEncodeAndDecode_InputStream_OutputStream()
 		{
 			Console.Out.WriteLine("encode and decode stream");
 
-			byte[] saltBytes = readSaltBytes();
+			byte[] saltBytes = ReadSaltBytes();
 
 			AESService instance = new AESService();
-			instance.generateKey(password, saltBytes);
+			instance.GenerateKey(password, saltBytes);
 
 			byte[] decData;
             byte[] encData;
@@ -148,12 +148,12 @@ namespace UnitTest
 			{
 				using (MemoryStream instream = new MemoryStream(msgBytes))
 				{
-					instance.encode(instream, outstream);
+					instance.Encode(instream, outstream);
 				}
 				encData = outstream.ToArray();
-				decData = instance.decode(encData);
+				decData = instance.Decode(encData);
 
-				Boolean bCompare = Compare.safeEquals(msgBytes, decData);
+				Boolean bCompare = Compare.SafeEquals(msgBytes, decData);
 				Assert.IsTrue(bCompare);
 			}
 
@@ -161,60 +161,60 @@ namespace UnitTest
             {
                 using (MemoryStream instream = new MemoryStream(encData))
                 {
-                    instance.decode(instream, outstream);
+                    instance.Decode(instream, outstream);
                 }
                 decData = outstream.ToArray();
 
-                Boolean bCompare = Compare.safeEquals(msgBytes, decData);
+                Boolean bCompare = Compare.SafeEquals(msgBytes, decData);
                 Assert.IsTrue(bCompare);
             }
         }
 
 		[Test()]
-		public void testGenerateKey_0args ()
+		public void TestGenerateKey_0args()
 		{
 			Console.Out.WriteLine("generateKey");
 
-			byte[] saltBytes = readSaltBytes();
+			byte[] saltBytes = ReadSaltBytes();
 
 			AESService instance = new AESService();
-			instance.generateKey(password, saltBytes);
+			instance.GenerateKey(password, saltBytes);
 
-			byte[] aes_key = instance.getAesKey();
+			byte[] aes_key = instance.GetAesKey();
 			Assert.IsNotNull(aes_key);
 		}
 
 		[Test()]
-		public void testGenerateKey_String_byteArr ()
+		public void TestGenerateKey_String_byteArr()
 		{
 			Console.Out.WriteLine("generateKey");
 
-			byte[] saltBytes = readSaltBytes();
+			byte[] saltBytes = ReadSaltBytes();
 
 			AESService instance = new AESService();
-			instance.generateKey(password, saltBytes);
+			instance.GenerateKey(password, saltBytes);
 
-			byte[] aes_key = instance.getAesKey();
+			byte[] aes_key = instance.GetAesKey();
 			Assert.IsNotNull(aes_key);
 		}
 
 		[Test()]
-		public void testSetAesKey ()
+		public void TestSetAesKey()
 		{
 			Console.Out.WriteLine("setAesKey");
 			AESService instance = new AESService();
-			instance.generateKey();
+			instance.GenerateKey();
 
-			byte[] result = instance.getAesKey();
+			byte[] result = instance.GetAesKey();
 			Assert.IsNotNull(result);
 
-			instance.setAesKey(result);
+			instance.SetAesKey(result);
 		}
 
 		//--------------------------------------------------------------------------
 		// Support functions.
 		//--------------------------------------------------------------------------
-		private byte[] readSaltBytes ()
+		private byte[] ReadSaltBytes()
 		{
 			byte[] saltBytes = null;
 			using (FileStream instream = new FileStream(SALT_DAT, FileMode.Open))
@@ -225,7 +225,7 @@ namespace UnitTest
 			return saltBytes;
 		}
 
-		private void writeSaltBytes (byte[] saltBytes1)
+		private void WriteSaltBytes(byte[] saltBytes1)
 		{
 			using (FileStream os = new FileStream(SALT_DAT, FileMode.Create))
 			{

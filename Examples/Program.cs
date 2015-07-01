@@ -4,12 +4,13 @@ namespace Examples
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static void Main(string[] args)
 		{
-			Example_010.main();
-			Example_020.main();
-			Example_030.main();
-			Example_060.main();
+			Example_010.Test();
+			Example_020.Test();
+			Example_030.Test();
+			Example_060.Test();
+			Example_070.Test();
 		}
 	}
 }

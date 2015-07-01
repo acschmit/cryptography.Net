@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using org.albertschmitt.crypto;
+using Org.AlbertSchmitt.Crypto;
 using System.Text;
 
 namespace Examples
@@ -11,11 +11,11 @@ namespace Examples
 		private const string TESTDATA_ENC_FILE = "./Example_030.enc.txt";
 		private const string TESTDATA_FILE = "./Example_030.txt";
 
-		public static void main()
+		public static void Test()
 		{
 			Console.Out.WriteLine("Begin Example_030.");
 			// Create some data to test with.
-			Support.testData(TESTDATA_FILE);
+			Support.TestData(TESTDATA_FILE);
 
 			/**
 			 * Create a 256-bit AES key. AES keys are synchronous. One key can both
@@ -23,7 +23,7 @@ namespace Examples
 			 */
 			Console.Out.WriteLine("Begin Create AES Key.");
 			AESService aes = new AESService();
-			aes.generateKey();
+			aes.GenerateKey();
 			Console.Out.WriteLine("End Create AES Key.");
 
 			/**
@@ -33,7 +33,7 @@ namespace Examples
 			using (FileStream outstream = new FileStream(TESTDATA_ENC_FILE, FileMode.Create),
 				   instream = new FileStream(TESTDATA_FILE, FileMode.Open))
 			{
-					aes.encode(instream, outstream);
+					aes.Encode(instream, outstream);
 			}
 			Console.Out.WriteLine("End Encrypt Data.");
 
@@ -44,16 +44,16 @@ namespace Examples
 			using (FileStream outstream = new FileStream(TESTDATA_DEC_FILE, FileMode.Create),
 				   instream = new FileStream(TESTDATA_ENC_FILE, FileMode.Open))
 			{
-					aes.decode(instream, outstream);
+					aes.Decode(instream, outstream);
 			}
 			Console.Out.WriteLine("End Decrypt Data.");
 					
 			/**
 			 * Compare the original and decrypted files.
 			 */
-			string shaOriginal = DigestSHA.sha256(new FileStream(TESTDATA_FILE, FileMode.Open));
-			string shaDecripted = DigestSHA.sha256(new FileStream(TESTDATA_DEC_FILE, FileMode.Open));
-			if (Compare.safeEquals(UTF8Encoding.UTF8.GetBytes(shaOriginal), UTF8Encoding.UTF8.GetBytes(shaDecripted)))
+			string shaOriginal = DigestSHA.Sha256(new FileStream(TESTDATA_FILE, FileMode.Open));
+			string shaDecripted = DigestSHA.Sha256(new FileStream(TESTDATA_DEC_FILE, FileMode.Open));
+			if (Compare.SafeEquals(UTF8Encoding.UTF8.GetBytes(shaOriginal), UTF8Encoding.UTF8.GetBytes(shaDecripted)))
 			{
 				Console.Out.WriteLine("Encrypted and decrypted files are the same.");
 			}

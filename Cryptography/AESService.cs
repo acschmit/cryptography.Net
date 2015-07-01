@@ -38,7 +38,7 @@ using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Utilities.Encoders;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// This class implements AES 256-bit encryption using the Bouncy Castle API
@@ -90,7 +90,7 @@ namespace org.albertschmitt.crypto
 		/// 
 		/// </summary>
 		/// <returns>The AES key size.</returns>
-		protected static int getAESKeySize()
+		protected static int GetAESKeySize()
 		{
 			return key_size;
 		}
@@ -100,7 +100,7 @@ namespace org.albertschmitt.crypto
 		/// in the constructor to set the key size if you want it to be 128 bits instead of the default.
 		/// </summary>
 		/// <param name="key_size">he desired AES key size. Only 128 and 256 are valid.</param>
-		protected static void setAESKeySize(int key_size)
+		protected static void SetAESKeySize(int key_size)
 		{
 			if (key_size == AES_128 || key_size == AES_256)
 			{
@@ -118,7 +118,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="a">First byte array.</param>
 		/// <param name="b">Second byte array.</param>
 		/// <returns>Byte array containing First + Second byte array.</returns>
-		private byte[] concatenate(byte[] a, byte[] b)
+		private byte[] Concatenate(byte[] a, byte[] b)
 		{
 			byte[] dest = new byte[a.Length + b.Length];
 			Buffer.BlockCopy(a, 0, dest, 0, a.Length);
@@ -132,7 +132,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="iv">The initialization vector.</param>
 		/// <param name="forEncryption">forEncryption <c>true</c> to encrypt, <c>false</c> to decrypt.</param>
 		/// <returns>IBufferedCipher configured to encrypt or decrypt</returns>
-		private IBufferedCipher getCipher(byte[] iv, Boolean forEncryption)
+		private IBufferedCipher GetCipher(byte[] iv, Boolean forEncryption)
 		{
 			ParametersWithIV ivKeyParam = new ParametersWithIV(aes_key, iv);
 			IBufferedCipher cipher = CipherUtilities.GetCipher(TRANSFORMATION);
@@ -146,15 +146,15 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="data">Byte array to be encoded.</param>
 		/// <returns>AES256 encoded byte array of input data.</returns>
-		public byte[] encode(byte[] data)
+		public byte[] Encode(byte[] data)
 		{
 			byte[] iv = new byte[IV_LENGTH];
 			SecureRandom secure = new SecureRandom();
 			secure.NextBytes(iv);
-			IBufferedCipher cipher = getCipher(iv, true);
+			IBufferedCipher cipher = GetCipher(iv, true);
 
 			byte[] enc = cipher.DoFinal(data);
-			byte[] encrypted = concatenate(iv, enc);
+			byte[] encrypted = Concatenate(iv, enc);
 			return encrypted;
 		}
 
@@ -163,10 +163,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="data">String to be encoded.</param>
 		/// <returns>AES256 encoded byte array of input data.</returns>
-		public byte[] encode(String data)
+		public byte[] Encode(String data)
 		{
 			byte[] bytes = UTF8Encoding.UTF8.GetBytes(data);
-			return encode(bytes);
+			return Encode(bytes);
 		}
 
 		/// <summary>
@@ -174,11 +174,11 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="data">AES256 encoded byte array.</param>
 		/// <returns>Decoded byte array of AES256 encoded input data.</returns>
-		public byte[] decode(byte[] data)
+		public byte[] Decode(byte[] data)
 		{
 			byte[] iv = new byte[IV_LENGTH];
 			Buffer.BlockCopy(data, 0, iv, 0, IV_LENGTH);
-			IBufferedCipher cipher = getCipher(iv, false);
+			IBufferedCipher cipher = GetCipher(iv, false);
 
 			byte[] dec = cipher.DoFinal(data, iv.Length, data.Length - IV_LENGTH);
 			return dec;
@@ -189,10 +189,10 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="data">AES256 encoded String.</param>
 		/// <returns>Decoded byte array of AES256 encoded input data.</returns>
-		public byte[] decode(String data)
+		public byte[] Decode(String data)
 		{
-            byte[] bytes = Hex.decode(data);
-			return decode(bytes);
+            byte[] bytes = Hex.Decode(data);
+			return Decode(bytes);
 		}
 
 		/// <summary>
@@ -201,7 +201,7 @@ namespace org.albertschmitt.crypto
 		/// <param name="instream">The input stream to be encrypted.</param>
 		/// <param name="outstream">The encrypted stream.</param>
 		/// <param name="cipher">A PaddedBufferedBlockCipher configured to encrypt or decrypt.</param>
-		private void doCipher(Stream instream, Stream outstream, IBufferedCipher cipher)
+		private void DoCipher(Stream instream, Stream outstream, IBufferedCipher cipher)
 		{
 			byte[] buffer = new byte[1024];
 			int blocksize = buffer.Length;
@@ -220,15 +220,15 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="instream">Stream to be encoded.</param>
 		/// <param name="outstream">AES256 encoded output stream of input stream.</param>
-		public void encode(Stream instream, Stream outstream)
+		public void Encode(Stream instream, Stream outstream)
 		{
 			byte[] iv = new byte[IV_LENGTH];
 			SecureRandom secure = new SecureRandom();
 			secure.NextBytes(iv);
-			IBufferedCipher cipher = getCipher(iv, true);
+			IBufferedCipher cipher = GetCipher(iv, true);
 			outstream.Write(iv, 0, iv.Length);
 
-			doCipher(instream, outstream, cipher);
+			DoCipher(instream, outstream, cipher);
 		}
 
 		/// <summary>
@@ -236,13 +236,13 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="instream">AES256 encoded input stream to be decoded.</param>
 		/// <param name="outstream">Decoded output stream of input stream.</param>
-		public void decode(Stream instream, Stream outstream)
+		public void Decode(Stream instream, Stream outstream)
 		{
 			byte[] iv = new byte[IV_LENGTH];
 			instream.Read(iv, 0, IV_LENGTH);
-			IBufferedCipher cipher = getCipher(iv, false);
+			IBufferedCipher cipher = GetCipher(iv, false);
 
-			doCipher(instream, outstream, cipher);
+			DoCipher(instream, outstream, cipher);
 		}
 
 		/// <summary>
@@ -251,7 +251,7 @@ namespace org.albertschmitt.crypto
 		/// encrypted with the key. The recipient would then decrypt the key using
 		/// RSA then use the key to decrypt the data.
 		/// </summary>
-		public void generateKey()
+		public void GenerateKey()
 		{
 			Pkcs5S2ParametersGenerator generator = new Pkcs5S2ParametersGenerator();
 
@@ -259,7 +259,7 @@ namespace org.albertschmitt.crypto
 			byte[] password = new byte[SALT_SIZE];
 			random.NextBytes(password);
 
-			generator.Init(password, generateSalt(), 20000);
+			generator.Init(password, GenerateSalt(), 20000);
 			aes_key = (KeyParameter) generator.GenerateDerivedMacParameters(AES_256);
 		}
 
@@ -268,7 +268,7 @@ namespace org.albertschmitt.crypto
 		/// </summary>
 		/// <param name="password">The password to be used to create the key.</param>
 		/// <param name="salt">The 32 byte long array to be used to create the key.</param>
-		public void generateKey(string password, byte[] salt)
+		public void GenerateKey(string password, byte[] salt)
 		{
 			Pkcs5S2ParametersGenerator generator = new Pkcs5S2ParametersGenerator();
 
@@ -282,7 +282,7 @@ namespace org.albertschmitt.crypto
 		/// an AES256 key. The salt is 32 bytes in length.
 		/// </summary>
 		/// <returns>Byte array containing the salt.</returns>
-		public byte[] generateSalt()
+		public byte[] GenerateSalt()
 		{
 			SecureRandom random = new SecureRandom();
 			byte[] salt = new byte[SALT_SIZE];
@@ -295,7 +295,7 @@ namespace org.albertschmitt.crypto
 		/// or <c>generateKey(String password, byte[] salt)</c>
 		/// </summary>
 		/// <returns>Byte array containing the AES key.</returns>
-		public byte[] getAesKey()
+		public byte[] GetAesKey()
 		{
 			return aes_key.GetKey();
 		}
@@ -304,7 +304,7 @@ namespace org.albertschmitt.crypto
 		/// Sets the AES key that was retrieved by the <c>getAesKey()</c> method.
 		/// </summary>
 		/// <param name="data">Byte array containing the AES key.</param>
-		public void setAesKey(byte[] data)
+		public void SetAesKey(byte[] data)
 		{
 			aes_key = new KeyParameter(data);
 		}

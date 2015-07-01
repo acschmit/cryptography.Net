@@ -4,7 +4,7 @@
         <name>Cryptography</name>
     </assembly>
     <members>
-        <member name="T:org.albertschmitt.crypto.RSAService">
+        <member name="T:Org.AlbertSchmitt.Crypto.RSAService">
             <summary>
             This class implements RSA private/public key encryption with a 2048 bit key
             using the Bouncy Castle API. Clients can use this class to easily incorporate
@@ -13,40 +13,40 @@
             External Dependencies:
             Bouncy Castle Release 1.7
             </summary></member>
-        <member name="T:org.albertschmitt.crypto.RSAService.KEYSIZE">
+        <member name="T:Org.AlbertSchmitt.Crypto.RSAService.KEYSIZE">
             <summary>
             KEYSIZE enumaration.
             </summary></member>
-        <member name="F:org.albertschmitt.crypto.RSAService.KEYSIZE.RSA_2K">
+        <member name="F:Org.AlbertSchmitt.Crypto.RSAService.KEYSIZE.RSA_2K">
             <summary>
             2048, 3072 or bit key.
             </summary></member>
-        <member name="F:org.albertschmitt.crypto.RSAService.KEYSIZE.RSA_3K">
+        <member name="F:Org.AlbertSchmitt.Crypto.RSAService.KEYSIZE.RSA_3K">
             <summary>
             3072 bit key.
             </summary></member>
-        <member name="F:org.albertschmitt.crypto.RSAService.KEYSIZE.RSA_4K">
+        <member name="F:Org.AlbertSchmitt.Crypto.RSAService.KEYSIZE.RSA_4K">
             <summary>
             4096 bit key.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.#ctor">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.#ctor">
             <summary>
-            Create an instance of the <see cref="T:org.albertschmitt.crypto.RSAService" /> class using a 2048 bit key.
+            Create an instance of the <see cref="T:Org.AlbertSchmitt.Crypto.RSAService" /> class using a 2048 bit key.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.#ctor(org.albertschmitt.crypto.RSAService.KEYSIZE)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.#ctor(Org.AlbertSchmitt.Crypto.RSAService.KEYSIZE)">
             <summary>
-            Create an instance of the <see cref="T:org.albertschmitt.crypto.RSAService" /> class using the
+            Create an instance of the <see cref="T:Org.AlbertSchmitt.Crypto.RSAService" /> class using the
             specified key size.
             </summary>
             <param name="keysize">The key size to create.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.concatenate(System.Byte[],System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Concatenate(System.Byte[],System.Byte[])">
             <summary>
             Concatenate two byte arrays together.
             </summary>
             <param name="a">First byte array.</param>
             <param name="b">Second byte array.</param>
             <returns>Byte array containing First + Second byte array.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.AsymmetricBlockCipher(org.albertschmitt.crypto.Key,System.Boolean)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.AsymmetricBlockCipher(Org.AlbertSchmitt.Crypto.Key,System.Boolean)">
             <summary>
             Return an IAsymmetricBlockCipher for encryption or decryption.
             </summary>
@@ -54,7 +54,7 @@
             <param name="key">The RSA key.</param>
             <param name="forEncryption"><c>true</c> if encrypting, <c>false</c> if decrypting.</param>
             <returns>IAsymmetricBlockCipher configured to encrypt or decrypt.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.doCipher(System.Byte[],org.albertschmitt.crypto.Key,System.Boolean)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.DoCipher(System.Byte[],Org.AlbertSchmitt.Crypto.Key,System.Boolean)">
             <summary>
             Encrypt or decrypt a stream and send the result to an output stream. TBD
             explain data size limit and why we're using a loop to get around it.
@@ -63,7 +63,7 @@
             <param name="key">The key to be used.</param>
             <param name="forEncryption"><c>true</c> to encrypt, <c>false</c> to decrypt.</param>
             <returns>The encrypted data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.doCipher(System.IO.Stream,System.IO.Stream,org.albertschmitt.crypto.Key,System.Boolean)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.DoCipher(System.IO.Stream,System.IO.Stream,Org.AlbertSchmitt.Crypto.Key,System.Boolean)">
             <summary>
             Encrypt or decrypt a stream and send the result to an output stream.
             </summary>
@@ -71,120 +71,134 @@
             <param name="outstream">The encrypted stream.</param>
             <param name="key">The key to be used.</param>
             <param name="forEncryption"><c>true</c> to encrypt, <c>false</c> to decrypt.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.encode(System.Byte[],org.albertschmitt.crypto.Key)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Encode(System.Byte[],Org.AlbertSchmitt.Crypto.Key)">
             <summary>
             Encode the byte data and return it in an byte array.
             </summary>
             <param name="data">The byte array to be encoded.</param>
             <param name="key">The key to be used.</param>
             <returns>The RSA encoded data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.encode(System.String,org.albertschmitt.crypto.Key)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Encode(System.String,Org.AlbertSchmitt.Crypto.Key)">
             <summary>
             Encode the String and return it in an byte array.
             </summary>
             <param name="data">The String to be encoded.</param>
             <param name="key">The key to be used.</param>
             <returns>The RSA encoded data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.decode(System.Byte[],org.albertschmitt.crypto.Key)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Decode(System.Byte[],Org.AlbertSchmitt.Crypto.Key)">
             <summary>
             Decode the RSA encoded byte data and return it in an byte array.
             </summary>
             <param name="data">RSA encoded byte array.</param>
             <param name="key">The key to be used.</param>
             <returns>Decoded byte array of RSA encoded input data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.decode(System.String,org.albertschmitt.crypto.Key)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Decode(System.String,Org.AlbertSchmitt.Crypto.Key)">
             <summary>
             Decode the RSA encoded String and return it in an byte array.
             </summary>
             <param name="data">RSA encoded String.</param>
             <param name="key">The key to be used.</param>
             <returns>Decoded byte array of RSA encoded input data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.encode(System.IO.Stream,System.IO.Stream,org.albertschmitt.crypto.Key)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Encode(System.IO.Stream,System.IO.Stream,Org.AlbertSchmitt.Crypto.Key)">
             <summary>
             Encode the input stream to RSA and return it in an output stream.
             </summary>
             <param name="instream">Stream to be encoded.</param>
             <param name="outstream">RSA encoded output stream of input stream.</param>
             <param name="key">The key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.decode(System.IO.Stream,System.IO.Stream,org.albertschmitt.crypto.Key)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.Decode(System.IO.Stream,System.IO.Stream,Org.AlbertSchmitt.Crypto.Key)">
             <summary>
             Decode the RSA encoded input stream and return it in an output stream.
             </summary>
             <param name="instream">RSA encoded input stream to be decoded.</param>
             <param name="outstream">Decoded output stream of input stream.</param>
             <param name="key">The key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.readPrivateKey(System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPrivateKey(System.String)">
             <summary>
             Read the RSA Private Key from the specified filename.
             </summary>
             <param name="filename">The file that contains the RSA Private Key.</param>
             <returns>The RSAPrivateKey.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.readPrivateKey(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPrivateKey(System.IO.Stream)">
             <summary>
             The input stream that contains the RSA Private Key.
             </summary>
             <param name="instream">The input stream that contains the RSA Private Key.</param>
             <returns>The RSAPrivateKey.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.readPublicKey(System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPublicKey(System.String)">
             <summary>
             Read the RSA Public Key from the specified filename.
             </summary>
             <param name="filename">The file that contains the RSA Public Key.</param>
             <returns>The RSAPublicKey.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.readPublicKey(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPublicKey(System.IO.Stream)">
             <summary>
             Read the RSA Public Key from the specified input stream.
             </summary>
             <param name="instream">The input stream that contains the RSA Public Key.</param>
             <returns>The RSAPublicKey.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.readPublicKeyDer(System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPublicKeyFromPrivate(System.String)">
             <summary>
-            Reads the public Key Der.
+            Extract the Public Key from the RSA Private Key from the file and return
+            it to the client.
             </summary>
-            <returns>The public key der.</returns>
-            <param name="filename">The file name of the Key Der.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.readPublicKeyDer(System.IO.Stream)">
+            <param name="filename">The file that contains the RSA Private Key.</param>
+            <returns>The RSAPublicKey.</returns></member>
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPublicKeyFromPrivate(System.IO.Stream)">
             <summary>
-            Reads the public Key Der.
+            Extract the Public Key from the RSA Private Key from the input stream and
+            return it to the client.
             </summary>
-            <returns>The public key der.</returns>
-            <param name="instream">The input stream that contains the Key Der.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.writeKey(System.IO.Stream,Org.BouncyCastle.Crypto.AsymmetricKeyParameter)">
+            <param name="instream">The input stream that contains the RSA Private Key.</param>
+            <returns>The RSAPublicKey.</returns></member>
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPublicKeyDer(System.String)">
+            <summary>
+            Reads the public DER format key.
+            </summary>
+            <param name="filename">The file name of the DER format key.</param>
+            <returns>The RSAPublicKey.</returns></member>
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.ReadPublicKeyDer(System.IO.Stream)">
+            <summary>
+            Reads the public DER format key.
+            </summary>
+            <param name="instream">The input stream that contains the key in DER format.</param>
+            <returns>The RSAPublicKey.</returns></member>
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.WriteKey(System.IO.Stream,Org.BouncyCastle.Crypto.AsymmetricKeyParameter)">
             <summary>
             Utility function that writes an RSA Public or Private key to an output
             stream.
             </summary>
             <param name="os">The stream to write the RSA key to.</param>
             <param name="key">The Key to be written to the stream.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.writePrivateKey(Org.BouncyCastle.Crypto.AsymmetricCipherKeyPair,System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.WritePrivateKey(Org.BouncyCastle.Crypto.AsymmetricCipherKeyPair,System.IO.Stream)">
             <summary>
             Construct a Private Key from an AsymmetricCipherKeyPair and write it to
             the Output Stream.
             </summary>
             <param name="keyPair">The Private Key.</param>
             <param name="os">The stream the Private Key is to be written to.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.writePublicKey(Org.BouncyCastle.Crypto.AsymmetricCipherKeyPair,System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.WritePublicKey(Org.BouncyCastle.Crypto.AsymmetricCipherKeyPair,System.IO.Stream)">
             <summary>
             Construct a Public Key from an AsymmetricCipherKeyPair and write it to
             the Output Stream.
             </summary>
             <param name="keyPair">The Public Key.</param>
             <param name="os">The stream the Public Key is to be written to.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.generateKey(System.String,System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.GenerateKey(System.String,System.String)">
             <summary>
             Generate a Public / Private RSA key pair and write them to the designated
             file names.
             </summary>
             <param name="private_keyfile">The file name to which the RSA Private Key will be written.</param>
             <param name="public_keyfile">public_filename The file name to which the RSA Public Key will be written.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.generateKey(System.IO.Stream,System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.GenerateKey(System.IO.Stream,System.IO.Stream)">
             <summary>
             Generate a Public / Private RSA key pair and write them to the designated
             Output Streams.
             </summary>
             <param name="os_private">The stream to which the RSA Private Key will be written.</param>
             <param name="os_public">The stream to which the RSA Public Key will be written.</param></member>
-        <member name="M:org.albertschmitt.crypto.RSAService.areKeysPresent(System.String,System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAService.AreKeysPresent(System.String,System.String)">
             <summary>
             Checks for the existence of the RSA Private and Public Key and returns
             true if they exist or false if they don't.
@@ -192,7 +206,7 @@
             <param name="private_keyfile">The file containing the RSA Private Key.</param>
             <param name="public_keyfile">The file containing the RSA Public Key.</param>
             <returns><c>true</c> if the key pair exist <c>false</c> if they do not.</returns></member>
-        <member name="T:org.albertschmitt.crypto.AESService">
+        <member name="T:Org.AlbertSchmitt.Crypto.AESService">
             <summary>
             This class implements AES 256-bit encryption using the Bouncy Castle API
             which gets around the 128-bit limitation imposed by the java runtime. Clients
@@ -202,13 +216,13 @@
             External Dependencies:
             Bouncy Castle Release 1.7
             </summary></member>
-        <member name="F:org.albertschmitt.crypto.AESService.SALT_SIZE">
+        <member name="F:Org.AlbertSchmitt.Crypto.AESService.SALT_SIZE">
             	 	 * The size in bytes of the salt.</member>
-        <member name="M:org.albertschmitt.crypto.AESService.#ctor">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:org.albertschmitt.crypto.AESService" /> class.
+            Initializes a new instance of the <see cref="T:Org.AlbertSchmitt.Crypto.AESService" /> class.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.AESService.getAESKeySize">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.GetAESKeySize">
             		 * Returns the AES key size. This is a protected function so the programmer
             		 * can changed the default key size to 128 bits by sub-classing this
             		 * AESService and using #setAESKeySize(int key_size) in the constructor to
@@ -222,173 +236,173 @@
             change it.
             </summary>
             <returns>The AES key size.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.setAESKeySize(System.Int32)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.SetAESKeySize(System.Int32)">
             <summary>
             Sets the size of the AES key.  Inherit from this class and call this function
             in the constructor to set the key size if you want it to be 128 bits instead of the default.
             </summary>
             <param name="key_size">he desired AES key size. Only 128 and 256 are valid.</param></member>
-        <member name="M:org.albertschmitt.crypto.AESService.concatenate(System.Byte[],System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Concatenate(System.Byte[],System.Byte[])">
             <summary>
             Concatenate two byte arrays together.
             </summary>
             <param name="a">First byte array.</param>
             <param name="b">Second byte array.</param>
             <returns>Byte array containing First + Second byte array.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.getCipher(System.Byte[],System.Boolean)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.GetCipher(System.Byte[],System.Boolean)">
             <summary>
             Return a IBufferedCipher for encryption or decryption.
             </summary>
             <param name="iv">The initialization vector.</param>
             <param name="forEncryption">forEncryption <c>true</c> to encrypt, <c>false</c> to decrypt.</param>
             <returns>IBufferedCipher configured to encrypt or decrypt</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.encode(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Encode(System.Byte[])">
             <summary>
             Encode the byte data to AES256 and return it in byte array.
             </summary>
             <param name="data">Byte array to be encoded.</param>
             <returns>AES256 encoded byte array of input data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.encode(System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Encode(System.String)">
             <summary>
             Encode the String to AES256 and return it in byte array.
             </summary>
             <param name="data">String to be encoded.</param>
             <returns>AES256 encoded byte array of input data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.decode(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Decode(System.Byte[])">
             <summary>
             Decode the AES256 encoded byte data and return it in an byte array.
             </summary>
             <param name="data">AES256 encoded byte array.</param>
             <returns>Decoded byte array of AES256 encoded input data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.decode(System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Decode(System.String)">
             <summary>
             Decode the AES256 encoded String and return it in an byte array.
             </summary>
             <param name="data">AES256 encoded String.</param>
             <returns>Decoded byte array of AES256 encoded input data.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.doCipher(System.IO.Stream,System.IO.Stream,Org.BouncyCastle.Crypto.IBufferedCipher)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.DoCipher(System.IO.Stream,System.IO.Stream,Org.BouncyCastle.Crypto.IBufferedCipher)">
             <summary>
             Encrypt or decrypt a stream and send the result to an output stream.
             </summary>
             <param name="instream">The input stream to be encrypted.</param>
             <param name="outstream">The encrypted stream.</param>
             <param name="cipher">A PaddedBufferedBlockCipher configured to encrypt or decrypt.</param></member>
-        <member name="M:org.albertschmitt.crypto.AESService.encode(System.IO.Stream,System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Encode(System.IO.Stream,System.IO.Stream)">
             <summary>
             Encode the input stream to AES256 and return it in an output stream.
             </summary>
             <param name="instream">Stream to be encoded.</param>
             <param name="outstream">AES256 encoded output stream of input stream.</param></member>
-        <member name="M:org.albertschmitt.crypto.AESService.decode(System.IO.Stream,System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.Decode(System.IO.Stream,System.IO.Stream)">
             <summary>
             Decode the AES256 encoded input stream and return it in an output stream.
             </summary>
             <param name="instream">AES256 encoded input stream to be decoded.</param>
             <param name="outstream">Decoded output stream of input stream.</param></member>
-        <member name="M:org.albertschmitt.crypto.AESService.generateKey">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.GenerateKey">
             <summary>
             Generate an AES key. A key generated by this method would typically be
             encrypted using RSA and sent to the recipient along with data that was
             encrypted with the key. The recipient would then decrypt the key using
             RSA then use the key to decrypt the data.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.AESService.generateKey(System.String,System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.GenerateKey(System.String,System.Byte[])">
             <summary>
             Generate an AES key using a given password and salt.
             </summary>
             <param name="password">The password to be used to create the key.</param>
             <param name="salt">The 32 byte long array to be used to create the key.</param></member>
-        <member name="M:org.albertschmitt.crypto.AESService.generateSalt">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.GenerateSalt">
             <summary>
             Generate a salt value using SecureRandom() that can be used to generate
             an AES256 key. The salt is 32 bytes in length.
             </summary>
             <returns>Byte array containing the salt.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.getAesKey">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.GetAesKey">
             <summary>
             Get the AES key that was created by <c>generateKey()</c>
             or <c>generateKey(String password, byte[] salt)</c>
             </summary>
             <returns>Byte array containing the AES key.</returns></member>
-        <member name="M:org.albertschmitt.crypto.AESService.setAesKey(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.AESService.SetAesKey(System.Byte[])">
             <summary>
             Sets the AES key that was retrieved by the <c>getAesKey()</c> method.
             </summary>
             <param name="data">Byte array containing the AES key.</param></member>
-        <member name="T:org.albertschmitt.crypto.DigestSHA">
+        <member name="T:Org.AlbertSchmitt.Crypto.DigestSHA">
             <summary>
             SHA classes.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.encode(System.Byte[],Org.BouncyCastle.Crypto.IDigest)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Encode(System.Byte[],Org.BouncyCastle.Crypto.IDigest)">
             <summary>
             Encode the stream with the given digest.
             </summary>
             <param name="data">The byte array to be encoded.</param>
             <param name="digest">The digest to be used.</param>
             <returns>Hashed value of the byte array as a hex string.</returns></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.encode(System.IO.Stream,Org.BouncyCastle.Crypto.IDigest)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Encode(System.IO.Stream,Org.BouncyCastle.Crypto.IDigest)">
             <summary>
             Encode the stream with the given digest.
             </summary>
             <param name="instream">The stream to be encoded.</param>
             <param name="digest">The digest to be used.</param>
             <returns>Hashed value of the stream as a hex string.</returns></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.md5(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.MD5(System.Byte[])">
             <summary>
             Return the md5 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.md5(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.MD5(System.IO.Stream)">
             <summary>
             Return the md5 hash of the stream.
             </summary>
             <param name="instream">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha1(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha1(System.Byte[])">
             <summary>
             Return the sha1 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha1(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha1(System.IO.Stream)">
             <summary>
             Return the sha1 hash of the stream.
             </summary>
             <param name="instream">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha256(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha256(System.Byte[])">
             <summary>
             Return the sha256 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha256(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha256(System.IO.Stream)">
             <summary>
             Return the sha256 hash of the stream.
             </summary>
             <param name="instream">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha384(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha384(System.Byte[])">
             <summary>
             Return the sha384 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha384(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha384(System.IO.Stream)">
             <summary>
             Return the sha384 hash of the stream.
             </summary>
             <param name="instream">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha512(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha512(System.Byte[])">
             <summary>
             Return the sha512 hash of the byte array.
             </summary>
             <param name="data">Data to be hashed.</param></member>
-        <member name="M:org.albertschmitt.crypto.DigestSHA.sha512(System.IO.Stream)">
+        <member name="M:Org.AlbertSchmitt.Crypto.DigestSHA.Sha512(System.IO.Stream)">
             <summary>
             Return the sha512 hash of the stream.
             </summary>
             <param name="instream">Data to be hashed.</param></member>
-        <member name="T:org.albertschmitt.crypto.HMAC">
+        <member name="T:Org.AlbertSchmitt.Crypto.HMAC">
             <summary>
             Keyed-Hash Message Authentication Code class.  Use this class to verify the
             data integrity and authenticity of a message.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.hmacDigest(System.Byte[],System.Byte[],Org.BouncyCastle.Crypto.IDigest)">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.HMacDigest(System.Byte[],System.Byte[],Org.BouncyCastle.Crypto.IDigest)">
             <summary>
             Return the HMAC of a message using the key and given digest.
             </summary>
@@ -396,95 +410,95 @@
             <param name="msg">Message.</param>
             <param name="keyBytes">The private key.</param>
             <param name="algorithm">The digest to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.md5(System.String,System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.MD5(System.String,System.String)">
             <summary>
             Return the md5 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyString">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.sha1(System.String,System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.Sha1(System.String,System.String)">
             <summary>
             Return the sha1 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyString">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.sha256(System.String,System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.Sha256(System.String,System.String)">
             <summary>
             Return the 256 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyString">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.sha512(System.String,System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.Sha512(System.String,System.String)">
             <summary>
             Return the sha512 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyString">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.md5(System.String,System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.MD5(System.String,System.Byte[])">
             <summary>
             Return the md5 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyBytes">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.sha1(System.String,System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.Sha1(System.String,System.Byte[])">
             <summary>
             Return the sha1 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyBytes">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.sha256(System.String,System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.Sha256(System.String,System.Byte[])">
             <summary>
             Return the sha256 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyBytes">The secret key to be used.</param></member>
-        <member name="M:org.albertschmitt.crypto.HMAC.sha512(System.String,System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.HMAC.Sha512(System.String,System.Byte[])">
             <summary>
             Return the sha512 HMAC of the message and given digest.
             </summary>
             <param name="msg">The message to be encoded.</param>
             <param name="keyBytes">The secret key to be used.</param></member>
-        <member name="T:org.albertschmitt.crypto.Key">
+        <member name="T:Org.AlbertSchmitt.Crypto.Key">
             <summary>
             Base class for strongly typed public and private rsa keys. This class was
             created to eliminate bouncycastle imports in classes that utilize the
             RSAService class.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.Key.setKey(Org.BouncyCastle.Crypto.AsymmetricKeyParameter)">
+        <member name="M:Org.AlbertSchmitt.Crypto.Key.SetKey(Org.BouncyCastle.Crypto.AsymmetricKeyParameter)">
             <summary>
             Sets the AsymmetricKeyParameter.
             </summary>
             <param name="key">Key.</param></member>
-        <member name="M:org.albertschmitt.crypto.Key.getKey">
+        <member name="M:Org.AlbertSchmitt.Crypto.Key.GetKey">
             <summary>
             Gets the AsymmetricKeyParameter.
             </summary>
             <returns>The key.</returns></member>
-        <member name="T:org.albertschmitt.crypto.RSAPrivateKey">
+        <member name="T:Org.AlbertSchmitt.Crypto.RSAPrivateKey">
             <summary>
             This class represents a strongly typed private RSA key.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.RSAPrivateKey.setPki">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAPrivateKey.GetPki">
             <summary>
             Sets the AsymmetricCipherKeyPair.
             </summary>
             <returns>The pki.</returns></member>
-        <member name="M:org.albertschmitt.crypto.RSAPrivateKey.setPki(Org.BouncyCastle.Crypto.AsymmetricCipherKeyPair)">
+        <member name="M:Org.AlbertSchmitt.Crypto.RSAPrivateKey.SetPki(Org.BouncyCastle.Crypto.AsymmetricCipherKeyPair)">
             <summary>
             Gets the AsymmetricCipherKeyPair.
             </summary>
             <param name="acp">Acp.</param></member>
-        <member name="T:org.albertschmitt.crypto.RSAPublicKey">
+        <member name="T:Org.AlbertSchmitt.Crypto.RSAPublicKey">
             <summary>
             This class represents a strongly typed private RSA key.
             </summary></member>
-        <member name="T:org.albertschmitt.crypto.Compare">
+        <member name="T:Org.AlbertSchmitt.Crypto.Compare">
             <summary>
             Cryptographically safe comparison functions. These functions should take
             the same time to complete regardless if they evaluate to true or false.
             That way, attackers can gain no additional information when hacking.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.Compare.safeEquals(System.Byte[],System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.Compare.SafeEquals(System.Byte[],System.Byte[])">
             <summary>
             Make sure any compare takes the same amount of time. Prevents timing
             based attacks.
@@ -492,18 +506,18 @@
             <param name="a">byte array 1.</param>
             <param name="b">byte array 2.</param>
             <returns><c>true</c> if byte arrays are equal, <c>false</c> if not.</returns></member>
-        <member name="T:org.albertschmitt.crypto.Hex">
+        <member name="T:Org.AlbertSchmitt.Crypto.Hex">
             <summary>
             Convert byte arrays to hexadecimal strings and visa-versa. This class is
             useful in situations where you want to store byte data in a text file.
             </summary></member>
-        <member name="M:org.albertschmitt.crypto.Hex.decode(System.String)">
+        <member name="M:Org.AlbertSchmitt.Crypto.Hex.Decode(System.String)">
             <summary>
             Convert a hexadecimal string back into a byte array. This function
             reverses the action of the encode(byte data[]) function.
             </summary>
             <param name="hexString">A hexadecimal string.</param></member>
-        <member name="M:org.albertschmitt.crypto.Hex.encode(System.Byte[])">
+        <member name="M:Org.AlbertSchmitt.Crypto.Hex.Encode(System.Byte[])">
             <summary>
             Convert a byte array into a hexadecimal string.
             </summary>

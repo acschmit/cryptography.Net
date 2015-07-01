@@ -24,7 +24,7 @@
 using System;
 using Org.BouncyCastle.Crypto;
 
-namespace org.albertschmitt.crypto
+namespace Org.AlbertSchmitt.Crypto
 {
 	/// <summary>
 	/// Base class for strongly typed public and private rsa keys. This class was
@@ -39,7 +39,7 @@ namespace org.albertschmitt.crypto
 		/// Sets the AsymmetricKeyParameter.
 		/// </summary>
 		/// <param name="key">Key.</param>
-		public void setKey(AsymmetricKeyParameter key)
+		public void SetKey(AsymmetricKeyParameter key)
 		{
 			this.key = key;
 		}
@@ -48,7 +48,7 @@ namespace org.albertschmitt.crypto
 		/// Gets the AsymmetricKeyParameter.
 		/// </summary>
 		/// <returns>The key.</returns>
-		public AsymmetricKeyParameter getKey()
+		public AsymmetricKeyParameter GetKey()
 		{
 			return this.key;
 		}
