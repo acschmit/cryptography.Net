@@ -3,6 +3,9 @@ An easy to use AES and RSA cryptography library written in C#, built on the Boun
 
 If you develop in both Java and C# then this project and the <a href="https://github.com/acschmit/cryptography" target="_blank">Java project</a> are worth taking a look at.  They share the same API.  The Unit Tests and Examples are the same between them as well to illustrate their similarity.
 
+##Key Structure
+Bouncy Castle saves PEM keys in PKCS#1 format but it can read PEM keys in PKCS#8 format as well.
+
 ##License
 The [license](LICENSE.txt), including licenses for dependent software, can be read [here](LICENSE.txt).
 
